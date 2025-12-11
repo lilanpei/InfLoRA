@@ -9,6 +9,7 @@ from utils.data import (
     iIMAGENET_A,
     iCUB,
     iDomainNet,
+    iIDomainNet,
     iCIFAR10,
     iMULTI,
 )
@@ -248,6 +249,8 @@ def _get_idata(dataset_name, args=None):
         return iIMAGENET_R(args)
     elif name == "domainnet":
         return iDomainNet(args)
+    elif name == "idomainnet":
+        return iIDomainNet(args)
     elif name == "imagenet_a":
         return iIMAGENET_A(args)
     elif name == "cub":

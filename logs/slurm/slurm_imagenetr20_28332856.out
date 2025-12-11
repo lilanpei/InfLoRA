@@ -1,0 +1,1000 @@
+logs/ImageNet_R/10_10_sip/InfLoRA/adam/10/0.98_1.0-0.0005/42
+2025-12-11 17:05:43,616 [trainer.py] => config: configs/mimg20_inflora_seed42.json
+2025-12-11 17:05:43,617 [trainer.py] => device: [device(type='cuda', index=0)]
+2025-12-11 17:05:43,617 [trainer.py] => prefix: reproduce
+2025-12-11 17:05:43,617 [trainer.py] => dataset: ImageNet_R
+2025-12-11 17:05:43,617 [trainer.py] => data_path: data/imagenet-r
+2025-12-11 17:05:43,617 [trainer.py] => memory_size: 0
+2025-12-11 17:05:43,617 [trainer.py] => memory_per_class: 0
+2025-12-11 17:05:43,617 [trainer.py] => fixed_memory: True
+2025-12-11 17:05:43,617 [trainer.py] => shuffle: False
+2025-12-11 17:05:43,617 [trainer.py] => init_cls: 10
+2025-12-11 17:05:43,617 [trainer.py] => increment: 10
+2025-12-11 17:05:43,617 [trainer.py] => model_name: InfLoRA
+2025-12-11 17:05:43,618 [trainer.py] => net_type: sip
+2025-12-11 17:05:43,618 [trainer.py] => embd_dim: 768
+2025-12-11 17:05:43,618 [trainer.py] => num_heads: 12
+2025-12-11 17:05:43,618 [trainer.py] => total_sessions: 20
+2025-12-11 17:05:43,618 [trainer.py] => seed: 42
+2025-12-11 17:05:43,618 [trainer.py] => EPSILON: 1e-08
+2025-12-11 17:05:43,618 [trainer.py] => init_epoch: 50
+2025-12-11 17:05:43,618 [trainer.py] => optim: adam
+2025-12-11 17:05:43,618 [trainer.py] => init_lr: 0.0005
+2025-12-11 17:05:43,618 [trainer.py] => init_lr_decay: 0.1
+2025-12-11 17:05:43,618 [trainer.py] => init_weight_decay: 0.0
+2025-12-11 17:05:43,618 [trainer.py] => epochs: 50
+2025-12-11 17:05:43,618 [trainer.py] => lrate: 0.0005
+2025-12-11 17:05:43,618 [trainer.py] => lrate_decay: 0.1
+2025-12-11 17:05:43,618 [trainer.py] => batch_size: 128
+2025-12-11 17:05:43,618 [trainer.py] => weight_decay: 0.0
+2025-12-11 17:05:43,618 [trainer.py] => rank: 10
+2025-12-11 17:05:43,618 [trainer.py] => lamb: 0.98
+2025-12-11 17:05:43,618 [trainer.py] => lame: 1.0
+2025-12-11 17:05:43,618 [trainer.py] => num_workers: 8
+2025-12-11 17:05:43,618 [trainer.py] => use_wncm: True
+2025-12-11 17:05:43,618 [trainer.py] => wncm_lambda: 0.07
+2025-12-11 17:05:43,618 [trainer.py] => save_checkpoints: False
+2025-12-11 17:05:43,888 [data_manager.py] => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199]
+Loading ViT weights from local checkpoint: /leonardo/home/userexternal/lli00001/vit_b16_in21k.pth
+Loaded 152 keys, missing 962, unexpected 0
+2025-12-11 17:05:45,865 [whitened_ncm_head.py] => WhitenedNCM: Using CPU
+2025-12-11 17:05:45,868 [trainer.py] => All params: 115034851
+2025-12-11 17:05:45,871 [trainer.py] => Trainable params: 115034851
+2025-12-11 17:05:45,871 [inflora.py] => Learning on 0-10
+Parameters to be updated: {'image_encoder.blocks.6.attn.lora_B_k.0.weight', 'image_encoder.blocks.7.attn.lora_B_v.0.weight', 'classifier_pool.0.bias', 'image_encoder.blocks.1.attn.lora_B_k.0.weight', 'image_encoder.blocks.10.attn.lora_B_v.0.weight', 'classifier_pool.0.weight', 'image_encoder.blocks.5.attn.lora_B_v.0.weight', 'image_encoder.blocks.2.attn.lora_B_k.0.weight', 'image_encoder.blocks.9.attn.lora_B_k.0.weight', 'image_encoder.blocks.10.attn.lora_B_k.0.weight', 'image_encoder.blocks.3.attn.lora_B_k.0.weight', 'image_encoder.blocks.0.attn.lora_B_v.0.weight', 'image_encoder.blocks.3.attn.lora_B_v.0.weight', 'image_encoder.blocks.11.attn.lora_B_v.0.weight', 'image_encoder.blocks.2.attn.lora_B_v.0.weight', 'image_encoder.blocks.11.attn.lora_B_k.0.weight', 'image_encoder.blocks.6.attn.lora_B_v.0.weight', 'image_encoder.blocks.9.attn.lora_B_v.0.weight', 'image_encoder.blocks.8.attn.lora_B_v.0.weight', 'image_encoder.blocks.1.attn.lora_B_v.0.weight', 'image_encoder.blocks.0.attn.lora_B_k.0.weight', 'image_encoder.blocks.4.attn.lora_B_k.0.weight', 'image_encoder.blocks.7.attn.lora_B_k.0.weight', 'image_encoder.blocks.8.attn.lora_B_k.0.weight', 'image_encoder.blocks.4.attn.lora_B_v.0.weight', 'image_encoder.blocks.5.attn.lora_B_k.0.weight'}
+2025-12-11 17:13:04,568 [inflora.py] => Task 0, Epoch 50/50 => Loss 0.137, Train_accy 96.36
+Threshold:  0.98
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 7/768 type remove
+Layer 2 : 10/768 type remove
+Layer 3 : 14/768 type remove
+Layer 4 : 17/768 type remove
+Layer 5 : 27/768 type remove
+Layer 6 : 25/768 type remove
+Layer 7 : 27/768 type remove
+Layer 8 : 27/768 type remove
+Layer 9 : 48/768 type remove
+Layer 10 : 48/768 type remove
+Layer 11 : 19/768 type remove
+Layer 12 : 49/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:13:15,858 [trainer.py] => Time:449.9871451854706
+373 373
+373 373
+2025-12-11 17:13:17,870 [trainer.py] => Time:2.011490821838379
+2025-12-11 17:13:17,870 [inflora.py] => Exemplar size: 0
+2025-12-11 17:13:17,870 [trainer.py] => CNN: {'total': np.float64(90.62), '00-09': np.float64(90.62), 'old': 0, 'new': np.float64(90.62)}
+2025-12-11 17:13:17,871 [trainer.py] => CNN top1 curve: [np.float64(90.62)]
+2025-12-11 17:13:17,871 [trainer.py] => CNN top1 with task curve: [np.float64(90.62)]
+2025-12-11 17:13:17,871 [trainer.py] => CNN top1 task curve: [1.0]
+2025-12-11 17:13:24,447 [trainer.py] => W-NCM: {'00-09': 89.27613941018767}
+2025-12-11 17:13:24,447 [trainer.py] => Ave Acc (W-NCM): 89.28%
+2025-12-11 17:13:24,448 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 89.28% (best 89.28%)
+2025-12-11 17:13:24,448 [trainer.py] => Average forgetting (W-NCM): 0.00% | Max forgetting (W-NCM): 0.00%
+2025-12-11 17:13:24,451 [trainer.py] => All params: 115034851
+2025-12-11 17:13:24,453 [trainer.py] => Trainable params: 192010
+2025-12-11 17:13:24,454 [inflora.py] => Learning on 10-20
+Parameters to be updated: {'image_encoder.blocks.1.attn.lora_B_k.11.weight', 'image_encoder.blocks.3.attn.lora_B_k.10.weight', 'image_encoder.blocks.9.attn.lora_B_k.19.weight', 'image_encoder.blocks.10.attn.lora_B_v.17.weight', 'image_encoder.blocks.10.attn.lora_B_v.19.weight', 'image_encoder.blocks.5.attn.lora_B_k.16.weight', 'image_encoder.blocks.6.attn.lora_B_k.15.weight', 'classifier_pool.15.weight', 'image_encoder.blocks.0.attn.lora_B_v.19.weight', 'image_encoder.blocks.6.attn.lora_B_v.16.weight', 'image_encoder.blocks.5.attn.lora_B_k.15.weight', 'image_encoder.blocks.0.attn.lora_B_v.16.weight', 'image_encoder.blocks.7.attn.lora_B_v.13.weight', 'image_encoder.blocks.7.attn.lora_B_k.12.weight', 'image_encoder.blocks.0.attn.lora_B_k.1.weight', 'image_encoder.blocks.5.attn.lora_B_k.11.weight', 'image_encoder.blocks.10.attn.lora_B_k.11.weight', 'image_encoder.blocks.4.attn.lora_B_k.13.weight', 'image_encoder.blocks.5.attn.lora_B_k.19.weight', 'classifier_pool.16.weight', 'image_encoder.blocks.7.attn.lora_B_k.17.weight', 'image_encoder.blocks.9.attn.lora_B_v.15.weight', 'image_encoder.blocks.1.attn.lora_B_k.17.weight', 'image_encoder.blocks.1.attn.lora_B_k.19.weight', 'classifier_pool.1.bias', 'image_encoder.blocks.4.attn.lora_B_v.1.weight', 'image_encoder.blocks.3.attn.lora_B_v.16.weight', 'image_encoder.blocks.4.attn.lora_B_k.11.weight', 'image_encoder.blocks.7.attn.lora_B_v.17.weight', 'image_encoder.blocks.10.attn.lora_B_k.12.weight', 'image_encoder.blocks.10.attn.lora_B_k.15.weight', 'image_encoder.blocks.10.attn.lora_B_k.14.weight', 'image_encoder.blocks.7.attn.lora_B_k.13.weight', 'classifier_pool.17.bias', 'classifier_pool.19.bias', 'image_encoder.blocks.9.attn.lora_B_k.1.weight', 'image_encoder.blocks.0.attn.lora_B_k.14.weight', 'image_encoder.blocks.2.attn.lora_B_k.17.weight', 'image_encoder.blocks.9.attn.lora_B_k.16.weight', 'image_encoder.blocks.7.attn.lora_B_k.18.weight', 'image_encoder.blocks.3.attn.lora_B_k.16.weight', 'image_encoder.blocks.7.attn.lora_B_k.14.weight', 'image_encoder.blocks.9.attn.lora_B_v.17.weight', 'image_encoder.blocks.3.attn.lora_B_v.10.weight', 'image_encoder.blocks.5.attn.lora_B_v.15.weight', 'image_encoder.blocks.3.attn.lora_B_k.18.weight', 'image_encoder.blocks.10.attn.lora_B_v.10.weight', 'image_encoder.blocks.2.attn.lora_B_k.18.weight', 'image_encoder.blocks.11.attn.lora_B_k.15.weight', 'image_encoder.blocks.5.attn.lora_B_v.13.weight', 'image_encoder.blocks.2.attn.lora_B_v.12.weight', 'image_encoder.blocks.5.attn.lora_B_v.14.weight', 'image_encoder.blocks.0.attn.lora_B_k.10.weight', 'image_encoder.blocks.10.attn.lora_B_k.17.weight', 'classifier_pool.13.bias', 'classifier_pool.17.weight', 'image_encoder.blocks.4.attn.lora_B_k.17.weight', 'image_encoder.blocks.9.attn.lora_B_v.19.weight', 'image_encoder.blocks.11.attn.lora_B_v.13.weight', 'image_encoder.blocks.4.attn.lora_B_k.18.weight', 'image_encoder.blocks.7.attn.lora_B_v.10.weight', 'image_encoder.blocks.2.attn.lora_B_k.14.weight', 'image_encoder.blocks.6.attn.lora_B_k.10.weight', 'image_encoder.blocks.2.attn.lora_B_v.18.weight', 'image_encoder.blocks.11.attn.lora_B_k.19.weight', 'image_encoder.blocks.0.attn.lora_B_v.14.weight', 'image_encoder.blocks.2.attn.lora_B_v.16.weight', 'image_encoder.blocks.9.attn.lora_B_k.18.weight', 'image_encoder.blocks.6.attn.lora_B_v.10.weight', 'image_encoder.blocks.6.attn.lora_B_k.14.weight', 'image_encoder.blocks.11.attn.lora_B_v.17.weight', 'image_encoder.blocks.4.attn.lora_B_k.16.weight', 'image_encoder.blocks.10.attn.lora_B_v.13.weight', 'image_encoder.blocks.1.attn.lora_B_v.15.weight', 'image_encoder.blocks.8.attn.lora_B_v.10.weight', 'image_encoder.blocks.7.attn.lora_B_k.19.weight', 'image_encoder.blocks.9.attn.lora_B_v.13.weight', 'image_encoder.blocks.11.attn.lora_B_k.10.weight', 'image_encoder.blocks.6.attn.lora_B_k.16.weight', 'image_encoder.blocks.6.attn.lora_B_v.1.weight', 'image_encoder.blocks.5.attn.lora_B_v.17.weight', 'image_encoder.blocks.8.attn.lora_B_k.11.weight', 'image_encoder.blocks.4.attn.lora_B_v.14.weight', 'image_encoder.blocks.10.attn.lora_B_v.14.weight', 'classifier_pool.10.weight', 'classifier_pool.13.weight', 'image_encoder.blocks.0.attn.lora_B_v.17.weight', 'image_encoder.blocks.1.attn.lora_B_v.10.weight', 'image_encoder.blocks.3.attn.lora_B_v.11.weight', 'image_encoder.blocks.3.attn.lora_B_v.14.weight', 'image_encoder.blocks.4.attn.lora_B_v.15.weight', 'image_encoder.blocks.1.attn.lora_B_v.13.weight', 'image_encoder.blocks.2.attn.lora_B_k.16.weight', 'image_encoder.blocks.8.attn.lora_B_v.18.weight', 'image_encoder.blocks.8.attn.lora_B_k.19.weight', 'image_encoder.blocks.4.attn.lora_B_v.17.weight', 'image_encoder.blocks.0.attn.lora_B_k.11.weight', 'image_encoder.blocks.1.attn.lora_B_k.15.weight', 'image_encoder.blocks.7.attn.lora_B_v.19.weight', 'image_encoder.blocks.8.attn.lora_B_k.15.weight', 'image_encoder.blocks.9.attn.lora_B_k.14.weight', 'image_encoder.blocks.9.attn.lora_B_v.18.weight', 'image_encoder.blocks.5.attn.lora_B_k.1.weight', 'image_encoder.blocks.0.attn.lora_B_v.15.weight', 'image_encoder.blocks.3.attn.lora_B_k.15.weight', 'image_encoder.blocks.3.attn.lora_B_v.15.weight', 'classifier_pool.10.bias', 'classifier_pool.16.bias', 'image_encoder.blocks.2.attn.lora_B_k.10.weight', 'image_encoder.blocks.4.attn.lora_B_v.11.weight', 'image_encoder.blocks.4.attn.lora_B_v.19.weight', 'image_encoder.blocks.5.attn.lora_B_v.16.weight', 'image_encoder.blocks.8.attn.lora_B_v.14.weight', 'image_encoder.blocks.3.attn.lora_B_k.12.weight', 'image_encoder.blocks.9.attn.lora_B_v.12.weight', 'image_encoder.blocks.4.attn.lora_B_v.13.weight', 'image_encoder.blocks.7.attn.lora_B_k.15.weight', 'image_encoder.blocks.2.attn.lora_B_v.15.weight', 'image_encoder.blocks.6.attn.lora_B_v.15.weight', 'image_encoder.blocks.2.attn.lora_B_k.19.weight', 'classifier_pool.12.bias', 'image_encoder.blocks.5.attn.lora_B_k.14.weight', 'image_encoder.blocks.6.attn.lora_B_v.13.weight', 'image_encoder.blocks.1.attn.lora_B_k.18.weight', 'image_encoder.blocks.2.attn.lora_B_v.10.weight', 'image_encoder.blocks.4.attn.lora_B_k.19.weight', 'image_encoder.blocks.7.attn.lora_B_v.12.weight', 'image_encoder.blocks.7.attn.lora_B_k.1.weight', 'image_encoder.blocks.11.attn.lora_B_k.12.weight', 'image_encoder.blocks.11.attn.lora_B_v.16.weight', 'image_encoder.blocks.9.attn.lora_B_k.13.weight', 'image_encoder.blocks.1.attn.lora_B_v.16.weight', 'image_encoder.blocks.4.attn.lora_B_v.18.weight', 'image_encoder.blocks.6.attn.lora_B_v.14.weight', 'image_encoder.blocks.2.attn.lora_B_k.15.weight', 'image_encoder.blocks.9.attn.lora_B_k.17.weight', 'image_encoder.blocks.10.attn.lora_B_v.16.weight', 'image_encoder.blocks.1.attn.lora_B_k.16.weight', 'image_encoder.blocks.2.attn.lora_B_k.12.weight', 'image_encoder.blocks.2.attn.lora_B_v.1.weight', 'image_encoder.blocks.2.attn.lora_B_v.14.weight', 'image_encoder.blocks.3.attn.lora_B_k.11.weight', 'image_encoder.blocks.1.attn.lora_B_v.17.weight', 'image_encoder.blocks.4.attn.lora_B_v.10.weight', 'image_encoder.blocks.1.attn.lora_B_k.1.weight', 'image_encoder.blocks.9.attn.lora_B_k.10.weight', 'image_encoder.blocks.9.attn.lora_B_k.11.weight', 'image_encoder.blocks.10.attn.lora_B_k.13.weight', 'image_encoder.blocks.1.attn.lora_B_v.12.weight', 'image_encoder.blocks.3.attn.lora_B_k.13.weight', 'image_encoder.blocks.7.attn.lora_B_v.15.weight', 'image_encoder.blocks.8.attn.lora_B_v.1.weight', 'image_encoder.blocks.7.attn.lora_B_k.10.weight', 'classifier_pool.12.weight', 'classifier_pool.18.weight', 'classifier_pool.19.weight', 'image_encoder.blocks.3.attn.lora_B_k.19.weight', 'image_encoder.blocks.8.attn.lora_B_v.11.weight', 'image_encoder.blocks.2.attn.lora_B_v.11.weight', 'image_encoder.blocks.1.attn.lora_B_k.10.weight', 'image_encoder.blocks.7.attn.lora_B_v.18.weight', 'image_encoder.blocks.6.attn.lora_B_k.18.weight', 'image_encoder.blocks.6.attn.lora_B_k.19.weight', 'image_encoder.blocks.7.attn.lora_B_v.16.weight', 'image_encoder.blocks.10.attn.lora_B_v.1.weight', 'image_encoder.blocks.11.attn.lora_B_v.11.weight', 'image_encoder.blocks.0.attn.lora_B_k.19.weight', 'image_encoder.blocks.8.attn.lora_B_k.1.weight', 'image_encoder.blocks.0.attn.lora_B_v.18.weight', 'image_encoder.blocks.1.attn.lora_B_v.1.weight', 'image_encoder.blocks.5.attn.lora_B_v.12.weight', 'image_encoder.blocks.5.attn.lora_B_v.18.weight', 'image_encoder.blocks.6.attn.lora_B_k.12.weight', 'image_encoder.blocks.7.attn.lora_B_v.14.weight', 'image_encoder.blocks.11.attn.lora_B_k.13.weight', 'image_encoder.blocks.11.attn.lora_B_v.19.weight', 'image_encoder.blocks.11.attn.lora_B_v.12.weight', 'image_encoder.blocks.11.attn.lora_B_k.18.weight', 'image_encoder.blocks.9.attn.lora_B_v.10.weight', 'image_encoder.blocks.3.attn.lora_B_v.12.weight', 'image_encoder.blocks.7.attn.lora_B_v.11.weight', 'image_encoder.blocks.5.attn.lora_B_v.10.weight', 'image_encoder.blocks.2.attn.lora_B_k.1.weight', 'image_encoder.blocks.5.attn.lora_B_v.1.weight', 'classifier_pool.11.bias', 'image_encoder.blocks.5.attn.lora_B_k.13.weight', 'image_encoder.blocks.8.attn.lora_B_v.15.weight', 'image_encoder.blocks.8.attn.lora_B_v.16.weight', 'image_encoder.blocks.8.attn.lora_B_k.10.weight', 'image_encoder.blocks.3.attn.lora_B_k.14.weight', 'image_encoder.blocks.1.attn.lora_B_v.11.weight', 'image_encoder.blocks.0.attn.lora_B_v.10.weight', 'image_encoder.blocks.0.attn.lora_B_v.13.weight', 'image_encoder.blocks.3.attn.lora_B_k.17.weight', 'image_encoder.blocks.8.attn.lora_B_v.12.weight', 'image_encoder.blocks.6.attn.lora_B_v.12.weight', 'image_encoder.blocks.3.attn.lora_B_v.17.weight', 'image_encoder.blocks.8.attn.lora_B_v.13.weight', 'image_encoder.blocks.3.attn.lora_B_v.13.weight', 'image_encoder.blocks.4.attn.lora_B_k.12.weight', 'image_encoder.blocks.5.attn.lora_B_k.18.weight', 'classifier_pool.18.bias', 'image_encoder.blocks.8.attn.lora_B_v.17.weight', 'image_encoder.blocks.10.attn.lora_B_v.15.weight', 'image_encoder.blocks.11.attn.lora_B_v.10.weight', 'image_encoder.blocks.3.attn.lora_B_v.1.weight', 'image_encoder.blocks.4.attn.lora_B_k.14.weight', 'image_encoder.blocks.8.attn.lora_B_k.16.weight', 'image_encoder.blocks.9.attn.lora_B_v.14.weight', 'image_encoder.blocks.0.attn.lora_B_k.18.weight', 'image_encoder.blocks.10.attn.lora_B_v.11.weight', 'image_encoder.blocks.2.attn.lora_B_k.13.weight', 'image_encoder.blocks.3.attn.lora_B_v.19.weight', 'image_encoder.blocks.5.attn.lora_B_k.17.weight', 'image_encoder.blocks.10.attn.lora_B_k.10.weight', 'image_encoder.blocks.5.attn.lora_B_v.11.weight', 'image_encoder.blocks.9.attn.lora_B_v.1.weight', 'image_encoder.blocks.11.attn.lora_B_k.17.weight', 'image_encoder.blocks.8.attn.lora_B_k.18.weight', 'image_encoder.blocks.11.attn.lora_B_k.16.weight', 'image_encoder.blocks.11.attn.lora_B_v.15.weight', 'image_encoder.blocks.0.attn.lora_B_k.15.weight', 'image_encoder.blocks.2.attn.lora_B_v.13.weight', 'image_encoder.blocks.10.attn.lora_B_k.16.weight', 'image_encoder.blocks.10.attn.lora_B_k.19.weight', 'image_encoder.blocks.11.attn.lora_B_v.18.weight', 'image_encoder.blocks.6.attn.lora_B_k.11.weight', 'image_encoder.blocks.8.attn.lora_B_k.13.weight', 'image_encoder.blocks.11.attn.lora_B_k.14.weight', 'image_encoder.blocks.8.attn.lora_B_v.19.weight', 'image_encoder.blocks.4.attn.lora_B_k.1.weight', 'image_encoder.blocks.7.attn.lora_B_k.16.weight', 'image_encoder.blocks.1.attn.lora_B_v.18.weight', 'image_encoder.blocks.10.attn.lora_B_v.18.weight', 'image_encoder.blocks.4.attn.lora_B_v.12.weight', 'image_encoder.blocks.6.attn.lora_B_v.18.weight', 'image_encoder.blocks.7.attn.lora_B_v.1.weight', 'image_encoder.blocks.2.attn.lora_B_k.11.weight', 'image_encoder.blocks.1.attn.lora_B_k.12.weight', 'image_encoder.blocks.9.attn.lora_B_v.11.weight', 'image_encoder.blocks.10.attn.lora_B_k.18.weight', 'image_encoder.blocks.4.attn.lora_B_k.10.weight', 'image_encoder.blocks.9.attn.lora_B_k.15.weight', 'image_encoder.blocks.10.attn.lora_B_v.12.weight', 'image_encoder.blocks.3.attn.lora_B_k.1.weight', 'image_encoder.blocks.11.attn.lora_B_v.14.weight', 'image_encoder.blocks.0.attn.lora_B_v.12.weight', 'image_encoder.blocks.5.attn.lora_B_k.12.weight', 'image_encoder.blocks.11.attn.lora_B_k.1.weight', 'classifier_pool.15.bias', 'image_encoder.blocks.5.attn.lora_B_k.10.weight', 'image_encoder.blocks.6.attn.lora_B_k.1.weight', 'image_encoder.blocks.0.attn.lora_B_k.12.weight', 'image_encoder.blocks.3.attn.lora_B_v.18.weight', 'image_encoder.blocks.0.attn.lora_B_k.17.weight', 'image_encoder.blocks.0.attn.lora_B_v.1.weight', 'image_encoder.blocks.1.attn.lora_B_v.19.weight', 'image_encoder.blocks.6.attn.lora_B_k.13.weight', 'image_encoder.blocks.5.attn.lora_B_v.19.weight', 'image_encoder.blocks.11.attn.lora_B_k.11.weight', 'classifier_pool.1.weight', 'image_encoder.blocks.1.attn.lora_B_k.14.weight', 'image_encoder.blocks.8.attn.lora_B_k.14.weight', 'classifier_pool.14.bias', 'image_encoder.blocks.2.attn.lora_B_v.17.weight', 'image_encoder.blocks.1.attn.lora_B_v.14.weight', 'image_encoder.blocks.0.attn.lora_B_k.16.weight', 'image_encoder.blocks.1.attn.lora_B_k.13.weight', 'image_encoder.blocks.6.attn.lora_B_v.11.weight', 'image_encoder.blocks.6.attn.lora_B_v.17.weight', 'image_encoder.blocks.9.attn.lora_B_v.16.weight', 'classifier_pool.14.weight', 'image_encoder.blocks.7.attn.lora_B_k.11.weight', 'image_encoder.blocks.11.attn.lora_B_v.1.weight', 'image_encoder.blocks.6.attn.lora_B_v.19.weight', 'image_encoder.blocks.4.attn.lora_B_v.16.weight', 'image_encoder.blocks.6.attn.lora_B_k.17.weight', 'image_encoder.blocks.0.attn.lora_B_v.11.weight', 'classifier_pool.11.weight', 'image_encoder.blocks.0.attn.lora_B_k.13.weight', 'image_encoder.blocks.9.attn.lora_B_k.12.weight', 'image_encoder.blocks.8.attn.lora_B_k.17.weight', 'image_encoder.blocks.10.attn.lora_B_k.1.weight', 'image_encoder.blocks.2.attn.lora_B_v.19.weight', 'image_encoder.blocks.8.attn.lora_B_k.12.weight', 'image_encoder.blocks.4.attn.lora_B_k.15.weight'}
+2025-12-11 17:19:29,094 [inflora.py] => Task 1, Epoch 50/50 => Loss 0.121, Train_accy 96.79
+Threshold:  0.981
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 8/768 type remove
+Layer 2 : 13/768 type remove
+Layer 3 : 19/768 type remove
+Layer 4 : 22/768 type remove
+Layer 5 : 36/768 type remove
+Layer 6 : 34/768 type remove
+Layer 7 : 37/768 type remove
+Layer 8 : 41/768 type remove
+Layer 9 : 70/768 type remove
+Layer 10 : 73/768 type remove
+Layer 11 : 31/768 type remove
+Layer 12 : 63/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:19:40,836 [trainer.py] => Time:376.3823685646057
+650 650
+650 650
+2025-12-11 17:19:43,418 [trainer.py] => Time:2.5821988582611084
+2025-12-11 17:19:43,419 [inflora.py] => Exemplar size: 0
+2025-12-11 17:19:43,419 [trainer.py] => CNN: {'total': np.float64(86.46), '00-09': np.float64(85.25), '10-19': np.float64(88.09), 'old': np.float64(85.25), 'new': np.float64(88.09)}
+2025-12-11 17:19:43,419 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46)]
+2025-12-11 17:19:43,419 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62)]
+2025-12-11 17:19:43,419 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692]
+2025-12-11 17:19:50,148 [trainer.py] => W-NCM: {'00-09': 82.57372654155496, '10-19': 90.61371841155234}
+2025-12-11 17:19:50,149 [trainer.py] => Ave Acc (W-NCM): 86.59%
+2025-12-11 17:19:50,149 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 82.57% (best 89.28%); T2: W-NCM 90.61% (best 90.61%)
+2025-12-11 17:19:50,149 [trainer.py] => Average forgetting (W-NCM): 6.70% | Max forgetting (W-NCM): 6.70%
+2025-12-11 17:19:50,152 [trainer.py] => All params: 115034851
+2025-12-11 17:19:50,155 [trainer.py] => Trainable params: 2112110
+2025-12-11 17:19:50,155 [inflora.py] => Learning on 20-30
+Parameters to be updated: {'image_encoder.blocks.9.attn.lora_B_v.2.weight', 'image_encoder.blocks.6.attn.lora_B_k.2.weight', 'image_encoder.blocks.0.attn.lora_B_v.2.weight', 'image_encoder.blocks.7.attn.lora_B_k.2.weight', 'image_encoder.blocks.3.attn.lora_B_v.2.weight', 'image_encoder.blocks.8.attn.lora_B_v.2.weight', 'image_encoder.blocks.6.attn.lora_B_v.2.weight', 'image_encoder.blocks.10.attn.lora_B_k.2.weight', 'image_encoder.blocks.11.attn.lora_B_k.2.weight', 'image_encoder.blocks.8.attn.lora_B_k.2.weight', 'classifier_pool.2.bias', 'image_encoder.blocks.10.attn.lora_B_v.2.weight', 'image_encoder.blocks.3.attn.lora_B_k.2.weight', 'image_encoder.blocks.0.attn.lora_B_k.2.weight', 'classifier_pool.2.weight', 'image_encoder.blocks.1.attn.lora_B_v.2.weight', 'image_encoder.blocks.11.attn.lora_B_v.2.weight', 'image_encoder.blocks.4.attn.lora_B_k.2.weight', 'image_encoder.blocks.5.attn.lora_B_v.2.weight', 'image_encoder.blocks.4.attn.lora_B_v.2.weight', 'image_encoder.blocks.2.attn.lora_B_v.2.weight', 'image_encoder.blocks.9.attn.lora_B_k.2.weight', 'image_encoder.blocks.5.attn.lora_B_k.2.weight', 'image_encoder.blocks.7.attn.lora_B_v.2.weight', 'image_encoder.blocks.1.attn.lora_B_k.2.weight', 'image_encoder.blocks.2.attn.lora_B_k.2.weight'}
+2025-12-11 17:28:27,923 [inflora.py] => Task 2, Epoch 50/50 => Loss 0.123, Train_accy 96.98
+Threshold:  0.982
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 8/768 type remove
+Layer 2 : 14/768 type remove
+Layer 3 : 20/768 type remove
+Layer 4 : 25/768 type remove
+Layer 5 : 40/768 type remove
+Layer 6 : 37/768 type remove
+Layer 7 : 41/768 type remove
+Layer 8 : 46/768 type remove
+Layer 9 : 76/768 type remove
+Layer 10 : 83/768 type remove
+Layer 11 : 37/768 type remove
+Layer 12 : 93/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:28:42,317 [trainer.py] => Time:532.1623573303223
+1114 1114
+1114 1114
+2025-12-11 17:28:46,088 [trainer.py] => Time:3.770812511444092
+2025-12-11 17:28:46,088 [inflora.py] => Exemplar size: 0
+2025-12-11 17:28:46,088 [trainer.py] => CNN: {'total': np.float64(84.47), '00-09': np.float64(81.5), '10-19': np.float64(85.56), '20-29': np.float64(86.21), 'old': np.float64(83.23), 'new': np.float64(86.21)}
+2025-12-11 17:28:46,088 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47)]
+2025-12-11 17:28:46,088 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57)]
+2025-12-11 17:28:46,089 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855]
+2025-12-11 17:28:55,285 [trainer.py] => W-NCM: {'00-09': 78.82037533512064, '10-19': 88.8086642599278, '20-29': 90.51724137931035}
+2025-12-11 17:28:55,285 [trainer.py] => Ave Acc (W-NCM): 86.05%
+2025-12-11 17:28:55,285 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 78.82% (best 89.28%); T2: W-NCM 88.81% (best 90.61%); T3: W-NCM 90.52% (best 90.52%)
+2025-12-11 17:28:55,285 [trainer.py] => Average forgetting (W-NCM): 6.13% | Max forgetting (W-NCM): 10.46%
+2025-12-11 17:28:55,288 [trainer.py] => All params: 115034851
+2025-12-11 17:28:55,291 [trainer.py] => Trainable params: 192010
+2025-12-11 17:28:55,291 [inflora.py] => Learning on 30-40
+Parameters to be updated: {'image_encoder.blocks.3.attn.lora_B_v.3.weight', 'image_encoder.blocks.3.attn.lora_B_k.3.weight', 'image_encoder.blocks.7.attn.lora_B_k.3.weight', 'classifier_pool.3.bias', 'image_encoder.blocks.4.attn.lora_B_k.3.weight', 'image_encoder.blocks.1.attn.lora_B_v.3.weight', 'image_encoder.blocks.2.attn.lora_B_v.3.weight', 'image_encoder.blocks.6.attn.lora_B_v.3.weight', 'image_encoder.blocks.9.attn.lora_B_v.3.weight', 'classifier_pool.3.weight', 'image_encoder.blocks.11.attn.lora_B_v.3.weight', 'image_encoder.blocks.6.attn.lora_B_k.3.weight', 'image_encoder.blocks.10.attn.lora_B_v.3.weight', 'image_encoder.blocks.5.attn.lora_B_v.3.weight', 'image_encoder.blocks.0.attn.lora_B_k.3.weight', 'image_encoder.blocks.5.attn.lora_B_k.3.weight', 'image_encoder.blocks.0.attn.lora_B_v.3.weight', 'image_encoder.blocks.7.attn.lora_B_v.3.weight', 'image_encoder.blocks.4.attn.lora_B_v.3.weight', 'image_encoder.blocks.8.attn.lora_B_v.3.weight', 'image_encoder.blocks.9.attn.lora_B_k.3.weight', 'image_encoder.blocks.10.attn.lora_B_k.3.weight', 'image_encoder.blocks.2.attn.lora_B_k.3.weight', 'image_encoder.blocks.1.attn.lora_B_k.3.weight', 'image_encoder.blocks.8.attn.lora_B_k.3.weight', 'image_encoder.blocks.11.attn.lora_B_k.3.weight'}
+2025-12-11 17:35:01,907 [inflora.py] => Task 3, Epoch 50/50 => Loss 0.124, Train_accy 96.39
+Threshold:  0.983
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 8/768 type remove
+Layer 2 : 15/768 type remove
+Layer 3 : 22/768 type remove
+Layer 4 : 28/768 type remove
+Layer 5 : 44/768 type remove
+Layer 6 : 41/768 type remove
+Layer 7 : 46/768 type remove
+Layer 8 : 51/768 type remove
+Layer 9 : 84/768 type remove
+Layer 10 : 92/768 type remove
+Layer 11 : 44/768 type remove
+Layer 12 : 110/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:35:13,580 [trainer.py] => Time:378.289493560791
+1400 1400
+1400 1400
+2025-12-11 17:35:18,087 [trainer.py] => Time:4.505936861038208
+2025-12-11 17:35:18,087 [inflora.py] => Exemplar size: 0
+2025-12-11 17:35:18,087 [trainer.py] => CNN: {'total': np.float64(83.43), '00-09': np.float64(80.43), '10-19': np.float64(85.2), '20-29': np.float64(86.42), '30-39': np.float64(80.77), 'old': np.float64(84.11), 'new': np.float64(80.77)}
+2025-12-11 17:35:18,087 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43)]
+2025-12-11 17:35:18,087 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07)]
+2025-12-11 17:35:18,087 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286]
+2025-12-11 17:35:26,839 [trainer.py] => W-NCM: {'00-09': 78.01608579088472, '10-19': 86.64259927797833, '20-29': 85.12931034482759, '30-39': 90.55944055944056}
+2025-12-11 17:35:26,839 [trainer.py] => Ave Acc (W-NCM): 85.09%
+2025-12-11 17:35:26,839 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 78.02% (best 89.28%); T2: W-NCM 86.64% (best 90.61%); T3: W-NCM 85.13% (best 90.52%); T4: W-NCM 90.56% (best 90.56%)
+2025-12-11 17:35:26,839 [trainer.py] => Average forgetting (W-NCM): 6.87% | Max forgetting (W-NCM): 11.26%
+2025-12-11 17:35:26,842 [trainer.py] => All params: 115034851
+2025-12-11 17:35:26,845 [trainer.py] => Trainable params: 192010
+2025-12-11 17:35:26,845 [inflora.py] => Learning on 40-50
+Parameters to be updated: {'image_encoder.blocks.6.attn.lora_B_v.4.weight', 'image_encoder.blocks.7.attn.lora_B_k.4.weight', 'image_encoder.blocks.0.attn.lora_B_k.4.weight', 'image_encoder.blocks.11.attn.lora_B_v.4.weight', 'image_encoder.blocks.3.attn.lora_B_k.4.weight', 'image_encoder.blocks.9.attn.lora_B_v.4.weight', 'image_encoder.blocks.11.attn.lora_B_k.4.weight', 'image_encoder.blocks.1.attn.lora_B_k.4.weight', 'image_encoder.blocks.5.attn.lora_B_k.4.weight', 'image_encoder.blocks.10.attn.lora_B_v.4.weight', 'image_encoder.blocks.6.attn.lora_B_k.4.weight', 'image_encoder.blocks.2.attn.lora_B_v.4.weight', 'image_encoder.blocks.0.attn.lora_B_v.4.weight', 'image_encoder.blocks.8.attn.lora_B_v.4.weight', 'image_encoder.blocks.9.attn.lora_B_k.4.weight', 'image_encoder.blocks.8.attn.lora_B_k.4.weight', 'image_encoder.blocks.5.attn.lora_B_v.4.weight', 'classifier_pool.4.weight', 'image_encoder.blocks.3.attn.lora_B_v.4.weight', 'image_encoder.blocks.1.attn.lora_B_v.4.weight', 'classifier_pool.4.bias', 'image_encoder.blocks.10.attn.lora_B_k.4.weight', 'image_encoder.blocks.4.attn.lora_B_k.4.weight', 'image_encoder.blocks.7.attn.lora_B_v.4.weight', 'image_encoder.blocks.4.attn.lora_B_v.4.weight', 'image_encoder.blocks.2.attn.lora_B_k.4.weight'}
+2025-12-11 17:40:12,698 [inflora.py] => Task 4, Epoch 50/50 => Loss 0.152, Train_accy 95.73
+Threshold:  0.984
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 8/768 type remove
+Layer 2 : 16/768 type remove
+Layer 3 : 24/768 type remove
+Layer 4 : 32/768 type remove
+Layer 5 : 48/768 type remove
+Layer 6 : 45/768 type remove
+Layer 7 : 54/768 type remove
+Layer 8 : 60/768 type remove
+Layer 9 : 97/768 type remove
+Layer 10 : 104/768 type remove
+Layer 11 : 57/768 type remove
+Layer 12 : 120/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:40:22,684 [trainer.py] => Time:295.83879685401917
+1634 1634
+1634 1634
+2025-12-11 17:40:27,826 [trainer.py] => Time:5.142045497894287
+2025-12-11 17:40:27,826 [inflora.py] => Exemplar size: 0
+2025-12-11 17:40:27,827 [trainer.py] => CNN: {'total': np.float64(81.09), '00-09': np.float64(78.28), '10-19': np.float64(79.06), '20-29': np.float64(84.48), '30-39': np.float64(80.07), '40-49': np.float64(82.48), 'old': np.float64(80.86), 'new': np.float64(82.48)}
+2025-12-11 17:40:27,827 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09)]
+2025-12-11 17:40:27,827 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09)]
+2025-12-11 17:40:27,827 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214]
+2025-12-11 17:40:36,345 [trainer.py] => W-NCM: {'00-09': 77.21179624664879, '10-19': 84.11552346570397, '20-29': 81.89655172413794, '30-39': 86.01398601398601, '40-49': 83.76068376068376}
+2025-12-11 17:40:36,345 [trainer.py] => Ave Acc (W-NCM): 82.60%
+2025-12-11 17:40:36,345 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 77.21% (best 89.28%); T2: W-NCM 84.12% (best 90.61%); T3: W-NCM 81.90% (best 90.52%); T4: W-NCM 86.01% (best 90.56%); T5: W-NCM 83.76% (best 83.76%)
+2025-12-11 17:40:36,345 [trainer.py] => Average forgetting (W-NCM): 7.93% | Max forgetting (W-NCM): 12.06%
+2025-12-11 17:40:36,348 [trainer.py] => All params: 115034851
+2025-12-11 17:40:36,351 [trainer.py] => Trainable params: 192010
+2025-12-11 17:40:36,351 [inflora.py] => Learning on 50-60
+Parameters to be updated: {'image_encoder.blocks.8.attn.lora_B_v.5.weight', 'image_encoder.blocks.8.attn.lora_B_k.5.weight', 'image_encoder.blocks.11.attn.lora_B_k.5.weight', 'image_encoder.blocks.11.attn.lora_B_v.5.weight', 'image_encoder.blocks.0.attn.lora_B_v.5.weight', 'image_encoder.blocks.7.attn.lora_B_k.5.weight', 'image_encoder.blocks.1.attn.lora_B_k.5.weight', 'image_encoder.blocks.1.attn.lora_B_v.5.weight', 'image_encoder.blocks.4.attn.lora_B_v.5.weight', 'image_encoder.blocks.0.attn.lora_B_k.5.weight', 'image_encoder.blocks.5.attn.lora_B_k.5.weight', 'image_encoder.blocks.2.attn.lora_B_k.5.weight', 'image_encoder.blocks.7.attn.lora_B_v.5.weight', 'image_encoder.blocks.3.attn.lora_B_v.5.weight', 'classifier_pool.5.weight', 'image_encoder.blocks.6.attn.lora_B_k.5.weight', 'image_encoder.blocks.3.attn.lora_B_k.5.weight', 'image_encoder.blocks.5.attn.lora_B_v.5.weight', 'image_encoder.blocks.4.attn.lora_B_k.5.weight', 'classifier_pool.5.bias', 'image_encoder.blocks.9.attn.lora_B_v.5.weight', 'image_encoder.blocks.10.attn.lora_B_v.5.weight', 'image_encoder.blocks.10.attn.lora_B_k.5.weight', 'image_encoder.blocks.2.attn.lora_B_v.5.weight', 'image_encoder.blocks.9.attn.lora_B_k.5.weight', 'image_encoder.blocks.6.attn.lora_B_v.5.weight'}
+2025-12-11 17:45:28,602 [inflora.py] => Task 5, Epoch 50/50 => Loss 0.181, Train_accy 93.88
+Threshold:  0.985
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 8/768 type remove
+Layer 2 : 17/768 type remove
+Layer 3 : 26/768 type remove
+Layer 4 : 35/768 type remove
+Layer 5 : 55/768 type remove
+Layer 6 : 53/768 type remove
+Layer 7 : 65/768 type remove
+Layer 8 : 70/768 type remove
+Layer 9 : 110/768 type remove
+Layer 10 : 115/768 type remove
+Layer 11 : 70/768 type remove
+Layer 12 : 131/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:45:38,779 [trainer.py] => Time:302.4281678199768
+1827 1827
+1827 1827
+2025-12-11 17:45:44,410 [trainer.py] => Time:5.630620718002319
+2025-12-11 17:45:44,410 [inflora.py] => Exemplar size: 0
+2025-12-11 17:45:44,410 [trainer.py] => CNN: {'total': np.float64(78.93), '00-09': np.float64(78.82), '10-19': np.float64(76.17), '20-29': np.float64(82.97), '30-39': np.float64(79.02), '40-49': np.float64(80.77), '50-59': np.float64(70.98), 'old': np.float64(79.87), 'new': np.float64(70.98)}
+2025-12-11 17:45:44,410 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93)]
+2025-12-11 17:45:44,410 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42)]
+2025-12-11 17:45:44,410 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938]
+2025-12-11 17:45:53,452 [trainer.py] => W-NCM: {'00-09': 77.7479892761394, '10-19': 84.83754512635379, '20-29': 79.95689655172413, '30-39': 83.56643356643356, '40-49': 77.35042735042735, '50-59': 88.08290155440415}
+2025-12-11 17:45:53,452 [trainer.py] => Ave Acc (W-NCM): 81.92%
+2025-12-11 17:45:53,453 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 77.75% (best 89.28%); T2: W-NCM 84.84% (best 90.61%); T3: W-NCM 79.96% (best 90.52%); T4: W-NCM 83.57% (best 90.56%); T5: W-NCM 77.35% (best 83.76%); T6: W-NCM 88.08% (best 88.08%)
+2025-12-11 17:45:53,453 [trainer.py] => Average forgetting (W-NCM): 8.25% | Max forgetting (W-NCM): 11.53%
+2025-12-11 17:45:53,456 [trainer.py] => All params: 115034851
+2025-12-11 17:45:53,459 [trainer.py] => Trainable params: 192010
+2025-12-11 17:45:53,459 [inflora.py] => Learning on 60-70
+Parameters to be updated: {'image_encoder.blocks.0.attn.lora_B_v.6.weight', 'image_encoder.blocks.9.attn.lora_B_k.6.weight', 'image_encoder.blocks.11.attn.lora_B_v.6.weight', 'image_encoder.blocks.3.attn.lora_B_v.6.weight', 'image_encoder.blocks.5.attn.lora_B_k.6.weight', 'image_encoder.blocks.10.attn.lora_B_k.6.weight', 'image_encoder.blocks.6.attn.lora_B_k.6.weight', 'image_encoder.blocks.6.attn.lora_B_v.6.weight', 'classifier_pool.6.weight', 'image_encoder.blocks.11.attn.lora_B_k.6.weight', 'image_encoder.blocks.4.attn.lora_B_k.6.weight', 'image_encoder.blocks.8.attn.lora_B_v.6.weight', 'image_encoder.blocks.2.attn.lora_B_k.6.weight', 'image_encoder.blocks.7.attn.lora_B_k.6.weight', 'image_encoder.blocks.9.attn.lora_B_v.6.weight', 'image_encoder.blocks.0.attn.lora_B_k.6.weight', 'image_encoder.blocks.4.attn.lora_B_v.6.weight', 'image_encoder.blocks.8.attn.lora_B_k.6.weight', 'image_encoder.blocks.1.attn.lora_B_k.6.weight', 'image_encoder.blocks.7.attn.lora_B_v.6.weight', 'classifier_pool.6.bias', 'image_encoder.blocks.1.attn.lora_B_v.6.weight', 'image_encoder.blocks.3.attn.lora_B_k.6.weight', 'image_encoder.blocks.2.attn.lora_B_v.6.weight', 'image_encoder.blocks.10.attn.lora_B_v.6.weight', 'image_encoder.blocks.5.attn.lora_B_v.6.weight'}
+2025-12-11 17:50:59,740 [inflora.py] => Task 6, Epoch 50/50 => Loss 0.139, Train_accy 95.91
+Threshold:  0.986
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 8/768 type remove
+Layer 2 : 18/768 type remove
+Layer 3 : 28/768 type remove
+Layer 4 : 39/768 type remove
+Layer 5 : 59/768 type remove
+Layer 6 : 56/768 type remove
+Layer 7 : 71/768 type remove
+Layer 8 : 77/768 type remove
+Layer 9 : 124/768 type remove
+Layer 10 : 127/768 type remove
+Layer 11 : 78/768 type remove
+Layer 12 : 137/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:51:09,982 [trainer.py] => Time:316.5230805873871
+2047 2047
+2047 2047
+2025-12-11 17:51:16,155 [trainer.py] => Time:6.17267370223999
+2025-12-11 17:51:16,155 [inflora.py] => Exemplar size: 0
+2025-12-11 17:51:16,155 [trainer.py] => CNN: {'total': np.float64(76.8), '00-09': np.float64(77.21), '10-19': np.float64(75.09), '20-29': np.float64(80.6), '30-39': np.float64(75.52), '40-49': np.float64(78.63), '50-59': np.float64(70.47), '60-69': np.float64(75.45), 'old': np.float64(76.96), 'new': np.float64(75.45)}
+2025-12-11 17:51:16,155 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8)]
+2025-12-11 17:51:16,155 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79)]
+2025-12-11 17:51:16,155 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899]
+2025-12-11 17:51:25,803 [trainer.py] => W-NCM: {'00-09': 75.06702412868633, '10-19': 84.11552346570397, '20-29': 77.58620689655173, '30-39': 77.62237762237763, '40-49': 75.21367521367522, '50-59': 82.90155440414507, '60-69': 90.0}
+2025-12-11 17:51:25,803 [trainer.py] => Ave Acc (W-NCM): 80.36%
+2025-12-11 17:51:25,803 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 75.07% (best 89.28%); T2: W-NCM 84.12% (best 90.61%); T3: W-NCM 77.59% (best 90.52%); T4: W-NCM 77.62% (best 90.56%); T5: W-NCM 75.21% (best 83.76%); T6: W-NCM 82.90% (best 88.08%); T7: W-NCM 90.00% (best 90.00%)
+2025-12-11 17:51:25,803 [trainer.py] => Average forgetting (W-NCM): 10.05% | Max forgetting (W-NCM): 14.21%
+2025-12-11 17:51:25,807 [trainer.py] => All params: 115034851
+2025-12-11 17:51:25,809 [trainer.py] => Trainable params: 192010
+2025-12-11 17:51:25,809 [inflora.py] => Learning on 70-80
+Parameters to be updated: {'image_encoder.blocks.10.attn.lora_B_k.7.weight', 'image_encoder.blocks.1.attn.lora_B_k.7.weight', 'image_encoder.blocks.10.attn.lora_B_v.7.weight', 'image_encoder.blocks.5.attn.lora_B_v.7.weight', 'image_encoder.blocks.2.attn.lora_B_k.7.weight', 'image_encoder.blocks.11.attn.lora_B_k.7.weight', 'image_encoder.blocks.8.attn.lora_B_k.7.weight', 'image_encoder.blocks.7.attn.lora_B_v.7.weight', 'image_encoder.blocks.9.attn.lora_B_k.7.weight', 'image_encoder.blocks.0.attn.lora_B_k.7.weight', 'image_encoder.blocks.5.attn.lora_B_k.7.weight', 'image_encoder.blocks.11.attn.lora_B_v.7.weight', 'image_encoder.blocks.4.attn.lora_B_k.7.weight', 'image_encoder.blocks.7.attn.lora_B_k.7.weight', 'image_encoder.blocks.8.attn.lora_B_v.7.weight', 'classifier_pool.7.bias', 'image_encoder.blocks.3.attn.lora_B_k.7.weight', 'image_encoder.blocks.2.attn.lora_B_v.7.weight', 'image_encoder.blocks.4.attn.lora_B_v.7.weight', 'image_encoder.blocks.0.attn.lora_B_v.7.weight', 'image_encoder.blocks.1.attn.lora_B_v.7.weight', 'image_encoder.blocks.6.attn.lora_B_v.7.weight', 'image_encoder.blocks.9.attn.lora_B_v.7.weight', 'image_encoder.blocks.3.attn.lora_B_v.7.weight', 'image_encoder.blocks.6.attn.lora_B_k.7.weight', 'classifier_pool.7.weight'}
+2025-12-11 17:58:47,395 [inflora.py] => Task 7, Epoch 50/50 => Loss 0.152, Train_accy 95.59
+Threshold:  0.987
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 9/768 type remove
+Layer 2 : 19/768 type remove
+Layer 3 : 34/768 type remove
+Layer 4 : 49/768 type remove
+Layer 5 : 73/768 type remove
+Layer 6 : 68/768 type remove
+Layer 7 : 85/768 type remove
+Layer 8 : 93/768 type remove
+Layer 9 : 158/768 type remove
+Layer 10 : 171/768 type remove
+Layer 11 : 103/768 type remove
+Layer 12 : 162/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 17:59:00,752 [trainer.py] => Time:454.9431014060974
+2403 2403
+2403 2403
+2025-12-11 17:59:07,909 [trainer.py] => Time:7.156564950942993
+2025-12-11 17:59:07,910 [inflora.py] => Exemplar size: 0
+2025-12-11 17:59:07,910 [trainer.py] => CNN: {'total': np.float64(76.36), '00-09': np.float64(77.21), '10-19': np.float64(77.62), '20-29': np.float64(81.9), '30-39': np.float64(77.27), '40-49': np.float64(79.49), '50-59': np.float64(64.77), '60-69': np.float64(75.0), '70-79': np.float64(71.63), 'old': np.float64(77.19), 'new': np.float64(71.63)}
+2025-12-11 17:59:07,910 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36)]
+2025-12-11 17:59:07,910 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68)]
+2025-12-11 17:59:07,910 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262]
+2025-12-11 17:59:19,842 [trainer.py] => W-NCM: {'00-09': 73.9946380697051, '10-19': 84.11552346570397, '20-29': 78.44827586206897, '30-39': 75.17482517482517, '40-49': 75.21367521367522, '50-59': 82.38341968911918, '60-69': 84.0909090909091, '70-79': 85.67415730337079}
+2025-12-11 17:59:19,843 [trainer.py] => Ave Acc (W-NCM): 79.89%
+2025-12-11 17:59:19,843 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 73.99% (best 89.28%); T2: W-NCM 84.12% (best 90.61%); T3: W-NCM 78.45% (best 90.52%); T4: W-NCM 75.17% (best 90.56%); T5: W-NCM 75.21% (best 83.76%); T6: W-NCM 82.38% (best 88.08%); T7: W-NCM 84.09% (best 90.00%); T8: W-NCM 85.67% (best 85.67%)
+2025-12-11 17:59:19,843 [trainer.py] => Average forgetting (W-NCM): 9.91% | Max forgetting (W-NCM): 15.38%
+2025-12-11 17:59:19,846 [trainer.py] => All params: 115034851
+2025-12-11 17:59:19,849 [trainer.py] => Trainable params: 192010
+2025-12-11 17:59:19,849 [inflora.py] => Learning on 80-90
+Parameters to be updated: {'image_encoder.blocks.7.attn.lora_B_v.8.weight', 'image_encoder.blocks.10.attn.lora_B_k.8.weight', 'image_encoder.blocks.5.attn.lora_B_k.8.weight', 'image_encoder.blocks.5.attn.lora_B_v.8.weight', 'image_encoder.blocks.8.attn.lora_B_v.8.weight', 'image_encoder.blocks.4.attn.lora_B_v.8.weight', 'image_encoder.blocks.6.attn.lora_B_v.8.weight', 'image_encoder.blocks.11.attn.lora_B_v.8.weight', 'image_encoder.blocks.11.attn.lora_B_k.8.weight', 'image_encoder.blocks.0.attn.lora_B_v.8.weight', 'image_encoder.blocks.9.attn.lora_B_k.8.weight', 'image_encoder.blocks.10.attn.lora_B_v.8.weight', 'image_encoder.blocks.3.attn.lora_B_v.8.weight', 'image_encoder.blocks.6.attn.lora_B_k.8.weight', 'image_encoder.blocks.3.attn.lora_B_k.8.weight', 'image_encoder.blocks.9.attn.lora_B_v.8.weight', 'image_encoder.blocks.4.attn.lora_B_k.8.weight', 'image_encoder.blocks.7.attn.lora_B_k.8.weight', 'image_encoder.blocks.8.attn.lora_B_k.8.weight', 'classifier_pool.8.bias', 'image_encoder.blocks.1.attn.lora_B_k.8.weight', 'image_encoder.blocks.2.attn.lora_B_k.8.weight', 'classifier_pool.8.weight', 'image_encoder.blocks.1.attn.lora_B_v.8.weight', 'image_encoder.blocks.0.attn.lora_B_k.8.weight', 'image_encoder.blocks.2.attn.lora_B_v.8.weight'}
+2025-12-11 18:07:21,498 [inflora.py] => Task 8, Epoch 50/50 => Loss 0.136, Train_accy 96.31
+Threshold:  0.988
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 9/768 type remove
+Layer 2 : 20/768 type remove
+Layer 3 : 36/768 type remove
+Layer 4 : 53/768 type remove
+Layer 5 : 80/768 type remove
+Layer 6 : 75/768 type remove
+Layer 7 : 95/768 type remove
+Layer 8 : 109/768 type remove
+Layer 9 : 180/768 type remove
+Layer 10 : 199/768 type remove
+Layer 11 : 121/768 type remove
+Layer 12 : 191/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:07:35,345 [trainer.py] => Time:495.49594616889954
+2786 2786
+2786 2786
+2025-12-11 18:07:43,467 [trainer.py] => Time:8.122351169586182
+2025-12-11 18:07:43,468 [inflora.py] => Exemplar size: 0
+2025-12-11 18:07:43,468 [trainer.py] => CNN: {'total': np.float64(76.6), '00-09': np.float64(75.34), '10-19': np.float64(80.51), '20-29': np.float64(82.76), '30-39': np.float64(77.62), '40-49': np.float64(80.77), '50-59': np.float64(63.73), '60-69': np.float64(71.36), '70-79': np.float64(68.54), '80-89': np.float64(81.2), 'old': np.float64(75.86), 'new': np.float64(81.2)}
+2025-12-11 18:07:43,468 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6)]
+2025-12-11 18:07:43,468 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99)]
+2025-12-11 18:07:43,468 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903]
+2025-12-11 18:07:56,661 [trainer.py] => W-NCM: {'00-09': 73.9946380697051, '10-19': 86.64259927797833, '20-29': 79.52586206896551, '30-39': 80.06993006993007, '40-49': 76.49572649572649, '50-59': 83.41968911917098, '60-69': 80.9090909090909, '70-79': 81.46067415730337, '80-89': 86.68407310704961}
+2025-12-11 18:07:56,661 [trainer.py] => Ave Acc (W-NCM): 81.02%
+2025-12-11 18:07:56,661 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 73.99% (best 89.28%); T2: W-NCM 86.64% (best 90.61%); T3: W-NCM 79.53% (best 90.52%); T4: W-NCM 80.07% (best 90.56%); T5: W-NCM 76.50% (best 83.76%); T6: W-NCM 83.42% (best 88.08%); T7: W-NCM 80.91% (best 90.00%); T8: W-NCM 81.46% (best 85.67%); T9: W-NCM 86.68% (best 86.68%)
+2025-12-11 18:07:56,661 [trainer.py] => Average forgetting (W-NCM): 8.25% | Max forgetting (W-NCM): 15.28%
+2025-12-11 18:07:56,664 [trainer.py] => All params: 115034851
+2025-12-11 18:07:56,667 [trainer.py] => Trainable params: 192010
+2025-12-11 18:07:56,667 [inflora.py] => Learning on 90-100
+Parameters to be updated: {'image_encoder.blocks.10.attn.lora_B_k.9.weight', 'image_encoder.blocks.8.attn.lora_B_v.9.weight', 'image_encoder.blocks.3.attn.lora_B_v.9.weight', 'classifier_pool.9.bias', 'image_encoder.blocks.1.attn.lora_B_v.9.weight', 'image_encoder.blocks.4.attn.lora_B_k.9.weight', 'image_encoder.blocks.2.attn.lora_B_k.9.weight', 'image_encoder.blocks.0.attn.lora_B_k.9.weight', 'image_encoder.blocks.0.attn.lora_B_v.9.weight', 'image_encoder.blocks.9.attn.lora_B_k.9.weight', 'image_encoder.blocks.2.attn.lora_B_v.9.weight', 'image_encoder.blocks.5.attn.lora_B_v.9.weight', 'image_encoder.blocks.4.attn.lora_B_v.9.weight', 'image_encoder.blocks.9.attn.lora_B_v.9.weight', 'image_encoder.blocks.6.attn.lora_B_v.9.weight', 'image_encoder.blocks.7.attn.lora_B_k.9.weight', 'image_encoder.blocks.6.attn.lora_B_k.9.weight', 'image_encoder.blocks.8.attn.lora_B_k.9.weight', 'image_encoder.blocks.11.attn.lora_B_k.9.weight', 'image_encoder.blocks.10.attn.lora_B_v.9.weight', 'classifier_pool.9.weight', 'image_encoder.blocks.3.attn.lora_B_k.9.weight', 'image_encoder.blocks.5.attn.lora_B_k.9.weight', 'image_encoder.blocks.1.attn.lora_B_k.9.weight', 'image_encoder.blocks.11.attn.lora_B_v.9.weight', 'image_encoder.blocks.7.attn.lora_B_v.9.weight'}
+2025-12-11 18:14:26,688 [inflora.py] => Task 9, Epoch 50/50 => Loss 0.162, Train_accy 95.29
+Threshold:  0.989
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 9/768 type remove
+Layer 2 : 21/768 type remove
+Layer 3 : 37/768 type remove
+Layer 4 : 55/768 type remove
+Layer 5 : 83/768 type remove
+Layer 6 : 79/768 type remove
+Layer 7 : 102/768 type remove
+Layer 8 : 114/768 type remove
+Layer 9 : 189/768 type remove
+Layer 10 : 214/768 type remove
+Layer 11 : 135/768 type remove
+Layer 12 : 244/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:14:38,825 [trainer.py] => Time:402.1574897766113
+3119 3119
+3119 3119
+2025-12-11 18:14:47,831 [trainer.py] => Time:9.00581955909729
+2025-12-11 18:14:47,831 [inflora.py] => Exemplar size: 0
+2025-12-11 18:14:47,831 [trainer.py] => CNN: {'total': np.float64(76.27), '00-09': np.float64(74.53), '10-19': np.float64(82.67), '20-29': np.float64(82.11), '30-39': np.float64(77.97), '40-49': np.float64(79.91), '50-59': np.float64(66.84), '60-69': np.float64(76.36), '70-79': np.float64(70.79), '80-89': np.float64(79.9), '90-99': np.float64(67.87), 'old': np.float64(77.28), 'new': np.float64(67.87)}
+2025-12-11 18:14:47,832 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27)]
+2025-12-11 18:14:47,832 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13)]
+2025-12-11 18:14:47,832 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536]
+2025-12-11 18:15:01,070 [trainer.py] => W-NCM: {'00-09': 70.24128686327077, '10-19': 84.83754512635379, '20-29': 77.80172413793103, '30-39': 74.12587412587412, '40-49': 73.50427350427351, '50-59': 80.31088082901555, '60-69': 80.45454545454545, '70-79': 73.31460674157303, '80-89': 83.28981723237598, '90-99': 83.78378378378379}
+2025-12-11 18:15:01,070 [trainer.py] => Ave Acc (W-NCM): 78.17%
+2025-12-11 18:15:01,070 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 70.24% (best 89.28%); T2: W-NCM 84.84% (best 90.61%); T3: W-NCM 77.80% (best 90.52%); T4: W-NCM 74.13% (best 90.56%); T5: W-NCM 73.50% (best 83.76%); T6: W-NCM 80.31% (best 88.08%); T7: W-NCM 80.45% (best 90.00%); T8: W-NCM 73.31% (best 85.67%); T9: W-NCM 83.29% (best 86.68%); T10: W-NCM 83.78% (best 83.78%)
+2025-12-11 18:15:01,070 [trainer.py] => Average forgetting (W-NCM): 10.81% | Max forgetting (W-NCM): 19.03%
+2025-12-11 18:15:01,074 [trainer.py] => All params: 115034851
+2025-12-11 18:15:01,077 [trainer.py] => Trainable params: 192010
+2025-12-11 18:15:01,077 [inflora.py] => Learning on 100-110
+Parameters to be updated: {'image_encoder.blocks.3.attn.lora_B_k.10.weight', 'image_encoder.blocks.6.attn.lora_B_k.10.weight', 'image_encoder.blocks.7.attn.lora_B_v.10.weight', 'image_encoder.blocks.10.attn.lora_B_k.10.weight', 'image_encoder.blocks.4.attn.lora_B_v.10.weight', 'image_encoder.blocks.9.attn.lora_B_k.10.weight', 'image_encoder.blocks.6.attn.lora_B_v.10.weight', 'image_encoder.blocks.7.attn.lora_B_k.10.weight', 'image_encoder.blocks.8.attn.lora_B_v.10.weight', 'image_encoder.blocks.1.attn.lora_B_k.10.weight', 'image_encoder.blocks.11.attn.lora_B_k.10.weight', 'classifier_pool.10.weight', 'image_encoder.blocks.4.attn.lora_B_k.10.weight', 'image_encoder.blocks.1.attn.lora_B_v.10.weight', 'image_encoder.blocks.5.attn.lora_B_k.10.weight', 'image_encoder.blocks.9.attn.lora_B_v.10.weight', 'image_encoder.blocks.5.attn.lora_B_v.10.weight', 'classifier_pool.10.bias', 'image_encoder.blocks.2.attn.lora_B_k.10.weight', 'image_encoder.blocks.8.attn.lora_B_k.10.weight', 'image_encoder.blocks.0.attn.lora_B_v.10.weight', 'image_encoder.blocks.3.attn.lora_B_v.10.weight', 'image_encoder.blocks.10.attn.lora_B_v.10.weight', 'image_encoder.blocks.2.attn.lora_B_v.10.weight', 'image_encoder.blocks.11.attn.lora_B_v.10.weight', 'image_encoder.blocks.0.attn.lora_B_k.10.weight'}
+2025-12-11 18:21:27,389 [inflora.py] => Task 10, Epoch 50/50 => Loss 0.229, Train_accy 92.47
+Threshold:  0.99
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 10/768 type remove
+Layer 2 : 24/768 type remove
+Layer 3 : 41/768 type remove
+Layer 4 : 62/768 type remove
+Layer 5 : 92/768 type remove
+Layer 6 : 90/768 type remove
+Layer 7 : 114/768 type remove
+Layer 8 : 127/768 type remove
+Layer 9 : 210/768 type remove
+Layer 10 : 240/768 type remove
+Layer 11 : 158/768 type remove
+Layer 12 : 269/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:21:39,426 [trainer.py] => Time:398.3490982055664
+3437 3437
+3437 3437
+2025-12-11 18:21:49,232 [trainer.py] => Time:9.805819272994995
+2025-12-11 18:21:49,232 [inflora.py] => Exemplar size: 0
+2025-12-11 18:21:49,232 [trainer.py] => CNN: {'total': np.float64(74.08), '00-09': np.float64(72.65), '10-19': np.float64(78.34), '20-29': np.float64(81.68), '30-39': np.float64(74.83), '40-49': np.float64(77.35), '50-59': np.float64(64.77), '60-69': np.float64(74.09), '70-79': np.float64(72.47), '80-89': np.float64(79.9), '90-99': np.float64(65.47), '100-109': np.float64(67.3), 'old': np.float64(74.77), 'new': np.float64(67.3)}
+2025-12-11 18:21:49,232 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08)]
+2025-12-11 18:21:49,233 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09)]
+2025-12-11 18:21:49,233 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544]
+2025-12-11 18:22:03,240 [trainer.py] => W-NCM: {'00-09': 68.09651474530831, '10-19': 78.70036101083032, '20-29': 74.13793103448276, '30-39': 70.62937062937063, '40-49': 73.50427350427351, '50-59': 81.34715025906736, '60-69': 82.27272727272728, '70-79': 73.87640449438202, '80-89': 79.89556135770235, '90-99': 75.07507507507508, '100-109': 82.70440251572327}
+2025-12-11 18:22:03,240 [trainer.py] => Ave Acc (W-NCM): 76.39%
+2025-12-11 18:22:03,240 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 68.10% (best 89.28%); T2: W-NCM 78.70% (best 90.61%); T3: W-NCM 74.14% (best 90.52%); T4: W-NCM 70.63% (best 90.56%); T5: W-NCM 73.50% (best 83.76%); T6: W-NCM 81.35% (best 88.08%); T7: W-NCM 82.27% (best 90.00%); T8: W-NCM 73.88% (best 85.67%); T9: W-NCM 79.90% (best 86.68%); T10: W-NCM 75.08% (best 83.78%); T11: W-NCM 82.70% (best 82.70%)
+2025-12-11 18:22:03,241 [trainer.py] => Average forgetting (W-NCM): 12.14% | Max forgetting (W-NCM): 21.18%
+2025-12-11 18:22:03,244 [trainer.py] => All params: 115034851
+2025-12-11 18:22:03,247 [trainer.py] => Trainable params: 192010
+2025-12-11 18:22:03,247 [inflora.py] => Learning on 110-120
+Parameters to be updated: {'image_encoder.blocks.1.attn.lora_B_k.11.weight', 'image_encoder.blocks.10.attn.lora_B_v.11.weight', 'image_encoder.blocks.9.attn.lora_B_k.11.weight', 'image_encoder.blocks.3.attn.lora_B_k.11.weight', 'image_encoder.blocks.5.attn.lora_B_v.11.weight', 'image_encoder.blocks.6.attn.lora_B_k.11.weight', 'image_encoder.blocks.8.attn.lora_B_v.11.weight', 'image_encoder.blocks.2.attn.lora_B_v.11.weight', 'image_encoder.blocks.10.attn.lora_B_k.11.weight', 'image_encoder.blocks.5.attn.lora_B_k.11.weight', 'image_encoder.blocks.2.attn.lora_B_k.11.weight', 'image_encoder.blocks.8.attn.lora_B_k.11.weight', 'image_encoder.blocks.9.attn.lora_B_v.11.weight', 'image_encoder.blocks.11.attn.lora_B_v.11.weight', 'image_encoder.blocks.3.attn.lora_B_v.11.weight', 'image_encoder.blocks.7.attn.lora_B_v.11.weight', 'image_encoder.blocks.0.attn.lora_B_k.11.weight', 'image_encoder.blocks.4.attn.lora_B_k.11.weight', 'image_encoder.blocks.11.attn.lora_B_k.11.weight', 'classifier_pool.11.bias', 'image_encoder.blocks.4.attn.lora_B_v.11.weight', 'image_encoder.blocks.6.attn.lora_B_v.11.weight', 'image_encoder.blocks.1.attn.lora_B_v.11.weight', 'image_encoder.blocks.7.attn.lora_B_k.11.weight', 'image_encoder.blocks.0.attn.lora_B_v.11.weight', 'classifier_pool.11.weight'}
+2025-12-11 18:27:26,630 [inflora.py] => Task 11, Epoch 50/50 => Loss 0.126, Train_accy 96.26
+Threshold:  0.991
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 10/768 type remove
+Layer 2 : 27/768 type remove
+Layer 3 : 44/768 type remove
+Layer 4 : 67/768 type remove
+Layer 5 : 101/768 type remove
+Layer 6 : 102/768 type remove
+Layer 7 : 132/768 type remove
+Layer 8 : 149/768 type remove
+Layer 9 : 243/768 type remove
+Layer 10 : 283/768 type remove
+Layer 11 : 185/768 type remove
+Layer 12 : 347/768 type remove
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:27:37,416 [trainer.py] => Time:334.1692726612091
+3677 3677
+3677 3677
+2025-12-11 18:27:47,863 [trainer.py] => Time:10.446358442306519
+2025-12-11 18:27:47,863 [inflora.py] => Exemplar size: 0
+2025-12-11 18:27:47,863 [trainer.py] => CNN: {'total': np.float64(74.16), '00-09': np.float64(70.78), '10-19': np.float64(79.42), '20-29': np.float64(79.74), '30-39': np.float64(74.13), '40-49': np.float64(76.07), '50-59': np.float64(66.32), '60-69': np.float64(70.91), '70-79': np.float64(71.91), '80-89': np.float64(77.02), '90-99': np.float64(66.37), '100-109': np.float64(66.35), '110-119': np.float64(90.0), 'old': np.float64(73.06), 'new': np.float64(90.0)}
+2025-12-11 18:27:47,863 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16)]
+2025-12-11 18:27:47,863 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2)]
+2025-12-11 18:27:47,864 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483]
+2025-12-11 18:28:01,906 [trainer.py] => W-NCM: {'00-09': 72.38605898123325, '10-19': 82.31046931407943, '20-29': 78.01724137931035, '30-39': 74.47552447552448, '40-49': 71.7948717948718, '50-59': 78.75647668393782, '60-69': 79.0909090909091, '70-79': 72.19101123595506, '80-89': 77.02349869451697, '90-99': 72.37237237237237, '100-109': 77.67295597484278, '110-119': 92.5}
+2025-12-11 18:28:01,907 [trainer.py] => Ave Acc (W-NCM): 77.38%
+2025-12-11 18:28:01,907 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 72.39% (best 89.28%); T2: W-NCM 82.31% (best 90.61%); T3: W-NCM 78.02% (best 90.52%); T4: W-NCM 74.48% (best 90.56%); T5: W-NCM 71.79% (best 83.76%); T6: W-NCM 78.76% (best 88.08%); T7: W-NCM 79.09% (best 90.00%); T8: W-NCM 72.19% (best 85.67%); T9: W-NCM 77.02% (best 86.68%); T10: W-NCM 72.37% (best 83.78%); T11: W-NCM 77.67% (best 82.70%); T12: W-NCM 92.50% (best 92.50%)
+2025-12-11 18:28:01,907 [trainer.py] => Average forgetting (W-NCM): 11.42% | Max forgetting (W-NCM): 16.89%
+2025-12-11 18:28:01,910 [trainer.py] => All params: 115034851
+2025-12-11 18:28:01,913 [trainer.py] => Trainable params: 192010
+2025-12-11 18:28:01,913 [inflora.py] => Learning on 120-130
+Parameters to be updated: {'image_encoder.blocks.2.attn.lora_B_k.12.weight', 'image_encoder.blocks.1.attn.lora_B_v.12.weight', 'classifier_pool.12.weight', 'image_encoder.blocks.7.attn.lora_B_k.12.weight', 'image_encoder.blocks.4.attn.lora_B_v.12.weight', 'image_encoder.blocks.1.attn.lora_B_k.12.weight', 'image_encoder.blocks.10.attn.lora_B_v.12.weight', 'image_encoder.blocks.6.attn.lora_B_k.12.weight', 'image_encoder.blocks.5.attn.lora_B_v.12.weight', 'image_encoder.blocks.5.attn.lora_B_k.12.weight', 'image_encoder.blocks.0.attn.lora_B_v.12.weight', 'image_encoder.blocks.11.attn.lora_B_v.12.weight', 'image_encoder.blocks.0.attn.lora_B_k.12.weight', 'image_encoder.blocks.3.attn.lora_B_v.12.weight', 'image_encoder.blocks.10.attn.lora_B_k.12.weight', 'image_encoder.blocks.8.attn.lora_B_v.12.weight', 'image_encoder.blocks.3.attn.lora_B_k.12.weight', 'image_encoder.blocks.9.attn.lora_B_v.12.weight', 'image_encoder.blocks.6.attn.lora_B_v.12.weight', 'image_encoder.blocks.4.attn.lora_B_k.12.weight', 'classifier_pool.12.bias', 'image_encoder.blocks.9.attn.lora_B_k.12.weight', 'image_encoder.blocks.7.attn.lora_B_v.12.weight', 'image_encoder.blocks.2.attn.lora_B_v.12.weight', 'image_encoder.blocks.11.attn.lora_B_k.12.weight', 'image_encoder.blocks.8.attn.lora_B_k.12.weight'}
+2025-12-11 18:34:20,036 [inflora.py] => Task 12, Epoch 50/50 => Loss 0.208, Train_accy 94.67
+Threshold:  0.992
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 10/768 type remove
+Layer 2 : 29/768 type remove
+Layer 3 : 46/768 type remove
+Layer 4 : 74/768 type remove
+Layer 5 : 112/768 type remove
+Layer 6 : 115/768 type remove
+Layer 7 : 149/768 type remove
+Layer 8 : 165/768 type remove
+Layer 9 : 259/768 type remove
+Layer 10 : 304/768 type remove
+Layer 11 : 202/768 type remove
+Layer 12 : 383/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:34:31,862 [trainer.py] => Time:389.94842290878296
+3975 3975
+3975 3975
+2025-12-11 18:34:43,066 [trainer.py] => Time:11.203875064849854
+2025-12-11 18:34:43,066 [inflora.py] => Exemplar size: 0
+2025-12-11 18:34:43,066 [trainer.py] => CNN: {'total': np.float64(72.58), '00-09': np.float64(72.39), '10-19': np.float64(75.45), '20-29': np.float64(78.66), '30-39': np.float64(74.83), '40-49': np.float64(76.5), '50-59': np.float64(66.32), '60-69': np.float64(71.82), '70-79': np.float64(68.82), '80-89': np.float64(74.67), '90-99': np.float64(66.37), '100-109': np.float64(62.58), '110-119': np.float64(88.33), '120-129': np.float64(66.78), 'old': np.float64(73.05), 'new': np.float64(66.78)}
+2025-12-11 18:34:43,066 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58)]
+2025-12-11 18:34:43,067 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13)]
+2025-12-11 18:34:43,067 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434]
+2025-12-11 18:34:58,285 [trainer.py] => W-NCM: {'00-09': 73.19034852546918, '10-19': 81.2274368231047, '20-29': 75.21551724137932, '30-39': 74.82517482517483, '40-49': 74.35897435897436, '50-59': 80.31088082901555, '60-69': 81.36363636363636, '70-79': 69.10112359550563, '80-89': 75.97911227154047, '90-99': 73.87387387387388, '100-109': 77.35849056603774, '110-119': 91.66666666666666, '120-129': 83.89261744966443}
+2025-12-11 18:34:58,285 [trainer.py] => Ave Acc (W-NCM): 77.87%
+2025-12-11 18:34:58,285 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 73.19% (best 89.28%); T2: W-NCM 81.23% (best 90.61%); T3: W-NCM 75.22% (best 90.52%); T4: W-NCM 74.83% (best 90.56%); T5: W-NCM 74.36% (best 83.76%); T6: W-NCM 80.31% (best 88.08%); T7: W-NCM 81.36% (best 90.00%); T8: W-NCM 69.10% (best 85.67%); T9: W-NCM 75.98% (best 86.68%); T10: W-NCM 73.87% (best 83.78%); T11: W-NCM 77.36% (best 82.70%); T12: W-NCM 91.67% (best 92.50%); T13: W-NCM 83.89% (best 83.89%)
+2025-12-11 18:34:58,285 [trainer.py] => Average forgetting (W-NCM): 10.47% | Max forgetting (W-NCM): 16.57%
+2025-12-11 18:34:58,288 [trainer.py] => All params: 115034851
+2025-12-11 18:34:58,291 [trainer.py] => Trainable params: 192010
+2025-12-11 18:34:58,291 [inflora.py] => Learning on 130-140
+Parameters to be updated: {'image_encoder.blocks.2.attn.lora_B_k.13.weight', 'image_encoder.blocks.10.attn.lora_B_k.13.weight', 'image_encoder.blocks.2.attn.lora_B_v.13.weight', 'image_encoder.blocks.3.attn.lora_B_k.13.weight', 'image_encoder.blocks.10.attn.lora_B_v.13.weight', 'image_encoder.blocks.8.attn.lora_B_k.13.weight', 'image_encoder.blocks.7.attn.lora_B_v.13.weight', 'image_encoder.blocks.9.attn.lora_B_v.13.weight', 'image_encoder.blocks.4.attn.lora_B_k.13.weight', 'classifier_pool.13.weight', 'image_encoder.blocks.11.attn.lora_B_k.13.weight', 'image_encoder.blocks.1.attn.lora_B_v.13.weight', 'image_encoder.blocks.6.attn.lora_B_k.13.weight', 'image_encoder.blocks.7.attn.lora_B_k.13.weight', 'image_encoder.blocks.5.attn.lora_B_k.13.weight', 'image_encoder.blocks.1.attn.lora_B_k.13.weight', 'image_encoder.blocks.0.attn.lora_B_v.13.weight', 'image_encoder.blocks.4.attn.lora_B_v.13.weight', 'image_encoder.blocks.8.attn.lora_B_v.13.weight', 'image_encoder.blocks.3.attn.lora_B_v.13.weight', 'image_encoder.blocks.0.attn.lora_B_k.13.weight', 'image_encoder.blocks.6.attn.lora_B_v.13.weight', 'image_encoder.blocks.5.attn.lora_B_v.13.weight', 'classifier_pool.13.bias', 'image_encoder.blocks.9.attn.lora_B_k.13.weight', 'image_encoder.blocks.11.attn.lora_B_v.13.weight'}
+2025-12-11 18:40:53,673 [inflora.py] => Task 13, Epoch 50/50 => Loss 0.156, Train_accy 94.83
+Threshold:  0.993
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 11/768 type remove
+Layer 2 : 33/768 type remove
+Layer 3 : 55/768 type remove
+Layer 4 : 85/768 type remove
+Layer 5 : 125/768 type remove
+Layer 6 : 135/768 type remove
+Layer 7 : 170/768 type remove
+Layer 8 : 195/768 type remove
+Layer 9 : 299/768 type remove
+Layer 10 : 359/768 type remove
+Layer 11 : 258/768 type remove
+Layer 12 : 319/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:41:05,015 [trainer.py] => Time:366.72357177734375
+4234 4234
+4234 4234
+2025-12-11 18:41:16,940 [trainer.py] => Time:11.924946546554565
+2025-12-11 18:41:16,941 [inflora.py] => Exemplar size: 0
+2025-12-11 18:41:16,941 [trainer.py] => CNN: {'total': np.float64(71.68), '00-09': np.float64(71.31), '10-19': np.float64(75.45), '20-29': np.float64(77.16), '30-39': np.float64(72.73), '40-49': np.float64(75.64), '50-59': np.float64(63.73), '60-69': np.float64(71.36), '70-79': np.float64(66.85), '80-89': np.float64(75.98), '90-99': np.float64(64.26), '100-109': np.float64(61.01), '110-119': np.float64(86.67), '120-129': np.float64(65.77), '130-139': np.float64(75.68), 'old': np.float64(71.42), 'new': np.float64(75.68)}
+2025-12-11 18:41:16,941 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58), np.float64(71.68)]
+2025-12-11 18:41:16,941 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13), np.float64(88.8)]
+2025-12-11 18:41:16,941 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434, 0.7409069437883797]
+2025-12-11 18:41:32,880 [trainer.py] => W-NCM: {'00-09': 72.65415549597856, '10-19': 80.50541516245488, '20-29': 76.29310344827587, '30-39': 73.77622377622379, '40-49': 74.35897435897436, '50-59': 79.27461139896373, '60-69': 76.81818181818181, '70-79': 69.3820224719101, '80-89': 74.67362924281984, '90-99': 72.67267267267268, '100-109': 73.27044025157232, '110-119': 88.75, '120-129': 78.18791946308725, '130-139': 84.16988416988417}
+2025-12-11 18:41:32,880 [trainer.py] => Ave Acc (W-NCM): 76.77%
+2025-12-11 18:41:32,880 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 72.65% (best 89.28%); T2: W-NCM 80.51% (best 90.61%); T3: W-NCM 76.29% (best 90.52%); T4: W-NCM 73.78% (best 90.56%); T5: W-NCM 74.36% (best 83.76%); T6: W-NCM 79.27% (best 88.08%); T7: W-NCM 76.82% (best 90.00%); T8: W-NCM 69.38% (best 85.67%); T9: W-NCM 74.67% (best 86.68%); T10: W-NCM 72.67% (best 83.78%); T11: W-NCM 73.27% (best 82.70%); T12: W-NCM 88.75% (best 92.50%); T13: W-NCM 78.19% (best 83.89%); T14: W-NCM 84.17% (best 84.17%)
+2025-12-11 18:41:32,880 [trainer.py] => Average forgetting (W-NCM): 11.34% | Max forgetting (W-NCM): 16.78%
+2025-12-11 18:41:32,884 [trainer.py] => All params: 115034851
+2025-12-11 18:41:32,886 [trainer.py] => Trainable params: 192010
+2025-12-11 18:41:32,887 [inflora.py] => Learning on 140-150
+Parameters to be updated: {'image_encoder.blocks.2.attn.lora_B_k.14.weight', 'image_encoder.blocks.0.attn.lora_B_v.14.weight', 'image_encoder.blocks.2.attn.lora_B_v.14.weight', 'image_encoder.blocks.6.attn.lora_B_k.14.weight', 'image_encoder.blocks.11.attn.lora_B_k.14.weight', 'image_encoder.blocks.10.attn.lora_B_v.14.weight', 'image_encoder.blocks.4.attn.lora_B_v.14.weight', 'image_encoder.blocks.3.attn.lora_B_v.14.weight', 'image_encoder.blocks.11.attn.lora_B_v.14.weight', 'image_encoder.blocks.7.attn.lora_B_v.14.weight', 'image_encoder.blocks.9.attn.lora_B_k.14.weight', 'image_encoder.blocks.1.attn.lora_B_k.14.weight', 'image_encoder.blocks.8.attn.lora_B_k.14.weight', 'image_encoder.blocks.10.attn.lora_B_k.14.weight', 'classifier_pool.14.bias', 'image_encoder.blocks.1.attn.lora_B_v.14.weight', 'image_encoder.blocks.8.attn.lora_B_v.14.weight', 'image_encoder.blocks.3.attn.lora_B_k.14.weight', 'image_encoder.blocks.0.attn.lora_B_k.14.weight', 'classifier_pool.14.weight', 'image_encoder.blocks.7.attn.lora_B_k.14.weight', 'image_encoder.blocks.5.attn.lora_B_k.14.weight', 'image_encoder.blocks.5.attn.lora_B_v.14.weight', 'image_encoder.blocks.4.attn.lora_B_k.14.weight', 'image_encoder.blocks.9.attn.lora_B_v.14.weight', 'image_encoder.blocks.6.attn.lora_B_v.14.weight'}
+2025-12-11 18:46:04,478 [inflora.py] => Task 14, Epoch 50/50 => Loss 0.193, Train_accy 94.15
+Threshold:  0.994
+Skip Updating DualGPM for layer: 1
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 11/768 type remove
+Layer 2 : 34/768 type remove
+Layer 3 : 56/768 type remove
+Layer 4 : 87/768 type remove
+Layer 5 : 129/768 type remove
+Layer 6 : 141/768 type remove
+Layer 7 : 180/768 type remove
+Layer 8 : 215/768 type remove
+Layer 9 : 317/768 type remove
+Layer 10 : 376/768 type remove
+Layer 11 : 279/768 type remove
+Layer 12 : 293/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:46:14,213 [trainer.py] => Time:281.3264756202698
+4435 4435
+4435 4435
+2025-12-11 18:46:26,600 [trainer.py] => Time:12.387043237686157
+2025-12-11 18:46:26,601 [inflora.py] => Exemplar size: 0
+2025-12-11 18:46:26,601 [trainer.py] => CNN: {'total': np.float64(71.66), '00-09': np.float64(71.05), '10-19': np.float64(75.81), '20-29': np.float64(76.72), '30-39': np.float64(71.68), '40-49': np.float64(77.35), '50-59': np.float64(60.62), '60-69': np.float64(70.45), '70-79': np.float64(65.45), '80-89': np.float64(75.72), '90-99': np.float64(66.97), '100-109': np.float64(62.58), '110-119': np.float64(85.83), '120-129': np.float64(65.77), '130-139': np.float64(75.68), '140-149': np.float64(72.64), 'old': np.float64(71.61), 'new': np.float64(72.64)}
+2025-12-11 18:46:26,601 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58), np.float64(71.68), np.float64(71.66)]
+2025-12-11 18:46:26,601 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13), np.float64(88.8), np.float64(88.46)]
+2025-12-11 18:46:26,601 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434, 0.7409069437883797, 0.7425028184892898]
+2025-12-11 18:46:41,965 [trainer.py] => W-NCM: {'00-09': 70.24128686327077, '10-19': 80.50541516245488, '20-29': 74.78448275862068, '30-39': 73.77622377622379, '40-49': 73.07692307692307, '50-59': 78.23834196891191, '60-69': 77.72727272727272, '70-79': 68.25842696629213, '80-89': 74.41253263707573, '90-99': 72.67267267267268, '100-109': 72.95597484276729, '110-119': 87.91666666666667, '120-129': 73.15436241610739, '130-139': 78.37837837837837, '140-149': 87.06467661691542}
+2025-12-11 18:46:41,966 [trainer.py] => Ave Acc (W-NCM): 76.21%
+2025-12-11 18:46:41,966 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 70.24% (best 89.28%); T2: W-NCM 80.51% (best 90.61%); T3: W-NCM 74.78% (best 90.52%); T4: W-NCM 73.78% (best 90.56%); T5: W-NCM 73.08% (best 83.76%); T6: W-NCM 78.24% (best 88.08%); T7: W-NCM 77.73% (best 90.00%); T8: W-NCM 68.26% (best 85.67%); T9: W-NCM 74.41% (best 86.68%); T10: W-NCM 72.67% (best 83.78%); T11: W-NCM 72.96% (best 82.70%); T12: W-NCM 87.92% (best 92.50%); T13: W-NCM 73.15% (best 83.89%); T14: W-NCM 78.38% (best 84.17%); T15: W-NCM 87.06% (best 87.06%)
+2025-12-11 18:46:41,966 [trainer.py] => Average forgetting (W-NCM): 11.87% | Max forgetting (W-NCM): 19.03%
+2025-12-11 18:46:41,969 [trainer.py] => All params: 115034851
+2025-12-11 18:46:41,972 [trainer.py] => Trainable params: 192010
+2025-12-11 18:46:41,972 [inflora.py] => Learning on 150-160
+Parameters to be updated: {'image_encoder.blocks.2.attn.lora_B_k.15.weight', 'image_encoder.blocks.6.attn.lora_B_k.15.weight', 'image_encoder.blocks.11.attn.lora_B_v.15.weight', 'image_encoder.blocks.0.attn.lora_B_k.15.weight', 'image_encoder.blocks.7.attn.lora_B_v.15.weight', 'image_encoder.blocks.1.attn.lora_B_v.15.weight', 'classifier_pool.15.weight', 'image_encoder.blocks.5.attn.lora_B_k.15.weight', 'image_encoder.blocks.9.attn.lora_B_v.15.weight', 'image_encoder.blocks.9.attn.lora_B_k.15.weight', 'image_encoder.blocks.4.attn.lora_B_v.15.weight', 'classifier_pool.15.bias', 'image_encoder.blocks.1.attn.lora_B_k.15.weight', 'image_encoder.blocks.8.attn.lora_B_k.15.weight', 'image_encoder.blocks.10.attn.lora_B_k.15.weight', 'image_encoder.blocks.0.attn.lora_B_v.15.weight', 'image_encoder.blocks.3.attn.lora_B_k.15.weight', 'image_encoder.blocks.3.attn.lora_B_v.15.weight', 'image_encoder.blocks.8.attn.lora_B_v.15.weight', 'image_encoder.blocks.7.attn.lora_B_k.15.weight', 'image_encoder.blocks.2.attn.lora_B_v.15.weight', 'image_encoder.blocks.5.attn.lora_B_v.15.weight', 'image_encoder.blocks.6.attn.lora_B_v.15.weight', 'image_encoder.blocks.11.attn.lora_B_k.15.weight', 'image_encoder.blocks.10.attn.lora_B_v.15.weight', 'image_encoder.blocks.4.attn.lora_B_k.15.weight'}
+2025-12-11 18:52:18,033 [inflora.py] => Task 15, Epoch 50/50 => Loss 0.212, Train_accy 92.03
+Threshold:  0.995
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 12/768 type remove
+Layer 2 : 36/768 type remove
+Layer 3 : 64/768 type remove
+Layer 4 : 98/768 type remove
+Layer 5 : 139/768 type remove
+Layer 6 : 154/768 type remove
+Layer 7 : 196/768 type remove
+Layer 8 : 238/768 type remove
+Layer 9 : 346/768 type remove
+Layer 10 : 367/768 type retain
+Layer 11 : 307/768 type remove
+Layer 12 : 278/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 18:52:29,395 [trainer.py] => Time:347.4231743812561
+4679 4679
+4679 4679
+2025-12-11 18:52:42,474 [trainer.py] => Time:13.078671932220459
+2025-12-11 18:52:42,475 [inflora.py] => Exemplar size: 0
+2025-12-11 18:52:42,475 [trainer.py] => CNN: {'total': np.float64(70.93), '00-09': np.float64(69.71), '10-19': np.float64(75.81), '20-29': np.float64(76.72), '30-39': np.float64(70.63), '40-49': np.float64(76.5), '50-59': np.float64(57.51), '60-69': np.float64(68.64), '70-79': np.float64(62.64), '80-89': np.float64(77.55), '90-99': np.float64(67.57), '100-109': np.float64(61.32), '110-119': np.float64(87.08), '120-129': np.float64(65.44), '130-139': np.float64(71.81), '140-149': np.float64(71.64), '150-159': np.float64(72.13), 'old': np.float64(70.87), 'new': np.float64(72.13)}
+2025-12-11 18:52:42,475 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58), np.float64(71.68), np.float64(71.66), np.float64(70.93)]
+2025-12-11 18:52:42,475 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13), np.float64(88.8), np.float64(88.46), np.float64(88.29)]
+2025-12-11 18:52:42,475 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434, 0.7409069437883797, 0.7425028184892898, 0.7356272707843556]
+2025-12-11 18:52:59,233 [trainer.py] => W-NCM: {'00-09': 67.5603217158177, '10-19': 80.50541516245488, '20-29': 73.92241379310344, '30-39': 73.42657342657343, '40-49': 74.35897435897436, '50-59': 77.720207253886, '60-69': 77.27272727272727, '70-79': 68.53932584269663, '80-89': 72.84595300261097, '90-99': 70.87087087087087, '100-109': 72.0125786163522, '110-119': 85.41666666666666, '120-129': 71.14093959731544, '130-139': 74.13127413127413, '140-149': 81.09452736318407, '150-159': 84.01639344262296}
+2025-12-11 18:52:59,233 [trainer.py] => Ave Acc (W-NCM): 75.30%
+2025-12-11 18:52:59,233 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 67.56% (best 89.28%); T2: W-NCM 80.51% (best 90.61%); T3: W-NCM 73.92% (best 90.52%); T4: W-NCM 73.43% (best 90.56%); T5: W-NCM 74.36% (best 83.76%); T6: W-NCM 77.72% (best 88.08%); T7: W-NCM 77.27% (best 90.00%); T8: W-NCM 68.54% (best 85.67%); T9: W-NCM 72.85% (best 86.68%); T10: W-NCM 70.87% (best 83.78%); T11: W-NCM 72.01% (best 82.70%); T12: W-NCM 85.42% (best 92.50%); T13: W-NCM 71.14% (best 83.89%); T14: W-NCM 74.13% (best 84.17%); T15: W-NCM 81.09% (best 87.06%); T16: W-NCM 84.02% (best 84.02%)
+2025-12-11 18:52:59,233 [trainer.py] => Average forgetting (W-NCM): 12.56% | Max forgetting (W-NCM): 21.72%
+2025-12-11 18:52:59,236 [trainer.py] => All params: 115034851
+2025-12-11 18:52:59,239 [trainer.py] => Trainable params: 192010
+2025-12-11 18:52:59,239 [inflora.py] => Learning on 160-170
+Parameters to be updated: {'image_encoder.blocks.10.attn.lora_B_v.16.weight', 'image_encoder.blocks.1.attn.lora_B_k.16.weight', 'image_encoder.blocks.5.attn.lora_B_k.16.weight', 'image_encoder.blocks.2.attn.lora_B_v.16.weight', 'image_encoder.blocks.11.attn.lora_B_k.16.weight', 'image_encoder.blocks.10.attn.lora_B_k.16.weight', 'image_encoder.blocks.4.attn.lora_B_k.16.weight', 'image_encoder.blocks.6.attn.lora_B_v.16.weight', 'image_encoder.blocks.7.attn.lora_B_k.16.weight', 'image_encoder.blocks.0.attn.lora_B_v.16.weight', 'image_encoder.blocks.6.attn.lora_B_k.16.weight', 'image_encoder.blocks.7.attn.lora_B_v.16.weight', 'image_encoder.blocks.2.attn.lora_B_k.16.weight', 'image_encoder.blocks.3.attn.lora_B_v.16.weight', 'classifier_pool.16.bias', 'image_encoder.blocks.0.attn.lora_B_k.16.weight', 'image_encoder.blocks.8.attn.lora_B_v.16.weight', 'image_encoder.blocks.5.attn.lora_B_v.16.weight', 'image_encoder.blocks.9.attn.lora_B_v.16.weight', 'image_encoder.blocks.9.attn.lora_B_k.16.weight', 'image_encoder.blocks.3.attn.lora_B_k.16.weight', 'image_encoder.blocks.4.attn.lora_B_v.16.weight', 'image_encoder.blocks.8.attn.lora_B_k.16.weight', 'image_encoder.blocks.11.attn.lora_B_v.16.weight', 'classifier_pool.16.weight', 'image_encoder.blocks.1.attn.lora_B_v.16.weight'}
+2025-12-11 18:59:56,510 [inflora.py] => Task 16, Epoch 50/50 => Loss 0.105, Train_accy 96.99
+Threshold:  0.996
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 13/768 type remove
+Layer 2 : 43/768 type remove
+Layer 3 : 84/768 type remove
+Layer 4 : 128/768 type remove
+Layer 5 : 176/768 type remove
+Layer 6 : 189/768 type remove
+Layer 7 : 232/768 type remove
+Layer 8 : 281/768 type remove
+Layer 9 : 368/768 type retain
+Layer 10 : 304/768 type retain
+Layer 11 : 369/768 type remove
+Layer 12 : 256/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 19:00:09,920 [trainer.py] => Time:430.68087577819824
+5005 5005
+5005 5005
+2025-12-11 19:00:23,843 [trainer.py] => Time:13.92272162437439
+2025-12-11 19:00:23,844 [inflora.py] => Exemplar size: 0
+2025-12-11 19:00:23,844 [trainer.py] => CNN: {'total': np.float64(70.55), '00-09': np.float64(69.44), '10-19': np.float64(72.92), '20-29': np.float64(75.65), '30-39': np.float64(70.63), '40-49': np.float64(76.07), '50-59': np.float64(59.07), '60-69': np.float64(67.27), '70-79': np.float64(61.8), '80-89': np.float64(75.98), '90-99': np.float64(63.36), '100-109': np.float64(60.38), '110-119': np.float64(87.08), '120-129': np.float64(63.76), '130-139': np.float64(71.43), '140-149': np.float64(69.65), '150-159': np.float64(71.31), '160-169': np.float64(81.29), 'old': np.float64(69.8), 'new': np.float64(81.29)}
+2025-12-11 19:00:23,844 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58), np.float64(71.68), np.float64(71.66), np.float64(70.93), np.float64(70.55)]
+2025-12-11 19:00:23,844 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13), np.float64(88.8), np.float64(88.46), np.float64(88.29), np.float64(88.33)]
+2025-12-11 19:00:23,844 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434, 0.7409069437883797, 0.7425028184892898, 0.7356272707843556, 0.7304695304695304]
+2025-12-11 19:00:42,099 [trainer.py] => W-NCM: {'00-09': 64.87935656836461, '10-19': 79.06137184115524, '20-29': 71.55172413793103, '30-39': 72.02797202797203, '40-49': 72.22222222222221, '50-59': 77.720207253886, '60-69': 74.0909090909091, '70-79': 65.4494382022472, '80-89': 72.0626631853786, '90-99': 68.16816816816817, '100-109': 71.38364779874213, '110-119': 86.66666666666667, '120-129': 69.79865771812081, '130-139': 74.9034749034749, '140-149': 80.09950248756219, '150-159': 79.50819672131148, '160-169': 90.1840490797546}
+2025-12-11 19:00:42,099 [trainer.py] => Ave Acc (W-NCM): 74.69%
+2025-12-11 19:00:42,100 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 64.88% (best 89.28%); T2: W-NCM 79.06% (best 90.61%); T3: W-NCM 71.55% (best 90.52%); T4: W-NCM 72.03% (best 90.56%); T5: W-NCM 72.22% (best 83.76%); T6: W-NCM 77.72% (best 88.08%); T7: W-NCM 74.09% (best 90.00%); T8: W-NCM 65.45% (best 85.67%); T9: W-NCM 72.06% (best 86.68%); T10: W-NCM 68.17% (best 83.78%); T11: W-NCM 71.38% (best 82.70%); T12: W-NCM 86.67% (best 92.50%); T13: W-NCM 69.80% (best 83.89%); T14: W-NCM 74.90% (best 84.17%); T15: W-NCM 80.10% (best 87.06%); T16: W-NCM 79.51% (best 84.02%); T17: W-NCM 90.18% (best 90.18%)
+2025-12-11 19:00:42,100 [trainer.py] => Average forgetting (W-NCM): 13.36% | Max forgetting (W-NCM): 24.40%
+2025-12-11 19:00:42,103 [trainer.py] => All params: 115034851
+2025-12-11 19:00:42,106 [trainer.py] => Trainable params: 192010
+2025-12-11 19:00:42,106 [inflora.py] => Learning on 170-180
+Parameters to be updated: {'image_encoder.blocks.9.attn.lora_B_k.17.weight', 'image_encoder.blocks.5.attn.lora_B_k.17.weight', 'image_encoder.blocks.10.attn.lora_B_v.17.weight', 'image_encoder.blocks.1.attn.lora_B_v.17.weight', 'image_encoder.blocks.11.attn.lora_B_k.17.weight', 'image_encoder.blocks.11.attn.lora_B_v.17.weight', 'image_encoder.blocks.5.attn.lora_B_v.17.weight', 'image_encoder.blocks.7.attn.lora_B_k.17.weight', 'image_encoder.blocks.0.attn.lora_B_v.17.weight', 'image_encoder.blocks.1.attn.lora_B_k.17.weight', 'image_encoder.blocks.4.attn.lora_B_v.17.weight', 'image_encoder.blocks.0.attn.lora_B_k.17.weight', 'image_encoder.blocks.7.attn.lora_B_v.17.weight', 'image_encoder.blocks.2.attn.lora_B_v.17.weight', 'classifier_pool.17.bias', 'image_encoder.blocks.3.attn.lora_B_k.17.weight', 'image_encoder.blocks.6.attn.lora_B_v.17.weight', 'image_encoder.blocks.2.attn.lora_B_k.17.weight', 'image_encoder.blocks.9.attn.lora_B_v.17.weight', 'image_encoder.blocks.3.attn.lora_B_v.17.weight', 'image_encoder.blocks.6.attn.lora_B_k.17.weight', 'image_encoder.blocks.8.attn.lora_B_v.17.weight', 'image_encoder.blocks.8.attn.lora_B_k.17.weight', 'image_encoder.blocks.10.attn.lora_B_k.17.weight', 'classifier_pool.17.weight', 'image_encoder.blocks.4.attn.lora_B_k.17.weight'}
+2025-12-11 19:06:52,417 [inflora.py] => Task 17, Epoch 50/50 => Loss 0.160, Train_accy 94.62
+Threshold:  0.997
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 14/768 type remove
+Layer 2 : 48/768 type remove
+Layer 3 : 93/768 type remove
+Layer 4 : 142/768 type remove
+Layer 5 : 195/768 type remove
+Layer 6 : 212/768 type remove
+Layer 7 : 259/768 type remove
+Layer 8 : 315/768 type remove
+Layer 9 : 338/768 type retain
+Layer 10 : 273/768 type retain
+Layer 11 : 349/768 type retain
+Layer 12 : 209/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 19:07:04,577 [trainer.py] => Time:382.4713749885559
+5306 5306
+5306 5306
+2025-12-11 19:07:19,278 [trainer.py] => Time:14.70075535774231
+2025-12-11 19:07:19,279 [inflora.py] => Exemplar size: 0
+2025-12-11 19:07:19,279 [trainer.py] => CNN: {'total': np.float64(71.45), '00-09': np.float64(69.71), '10-19': np.float64(74.73), '20-29': np.float64(76.94), '30-39': np.float64(69.93), '40-49': np.float64(73.93), '50-59': np.float64(61.66), '60-69': np.float64(69.09), '70-79': np.float64(61.8), '80-89': np.float64(76.24), '90-99': np.float64(64.26), '100-109': np.float64(61.64), '110-119': np.float64(86.67), '120-129': np.float64(62.08), '130-139': np.float64(72.59), '140-149': np.float64(70.65), '150-159': np.float64(73.36), '160-169': np.float64(80.67), '170-179': np.float64(78.41), 'old': np.float64(71.03), 'new': np.float64(78.41)}
+2025-12-11 19:07:19,279 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58), np.float64(71.68), np.float64(71.66), np.float64(70.93), np.float64(70.55), np.float64(71.45)]
+2025-12-11 19:07:19,279 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13), np.float64(88.8), np.float64(88.46), np.float64(88.29), np.float64(88.33), np.float64(89.09)]
+2025-12-11 19:07:19,279 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434, 0.7409069437883797, 0.7425028184892898, 0.7356272707843556, 0.7304695304695304, 0.7372785525819827]
+2025-12-11 19:07:37,937 [trainer.py] => W-NCM: {'00-09': 68.09651474530831, '10-19': 79.78339350180505, '20-29': 73.49137931034483, '30-39': 74.47552447552448, '40-49': 72.64957264957265, '50-59': 79.79274611398964, '60-69': 77.27272727272727, '70-79': 67.41573033707866, '80-89': 72.32375979112271, '90-99': 70.27027027027027, '100-109': 72.32704402515722, '110-119': 86.66666666666667, '120-129': 69.12751677852349, '130-139': 75.2895752895753, '140-149': 79.1044776119403, '150-159': 76.22950819672131, '160-169': 88.34355828220859, '170-179': 91.36212624584718}
+2025-12-11 19:07:37,937 [trainer.py] => Ave Acc (W-NCM): 76.33%
+2025-12-11 19:07:37,937 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 68.10% (best 89.28%); T2: W-NCM 79.78% (best 90.61%); T3: W-NCM 73.49% (best 90.52%); T4: W-NCM 74.48% (best 90.56%); T5: W-NCM 72.65% (best 83.76%); T6: W-NCM 79.79% (best 88.08%); T7: W-NCM 77.27% (best 90.00%); T8: W-NCM 67.42% (best 85.67%); T9: W-NCM 72.32% (best 86.68%); T10: W-NCM 70.27% (best 83.78%); T11: W-NCM 72.33% (best 82.70%); T12: W-NCM 86.67% (best 92.50%); T13: W-NCM 69.13% (best 83.89%); T14: W-NCM 75.29% (best 84.17%); T15: W-NCM 79.10% (best 87.06%); T16: W-NCM 76.23% (best 84.02%); T17: W-NCM 88.34% (best 90.18%); T18: W-NCM 91.36% (best 91.36%)
+2025-12-11 19:07:37,937 [trainer.py] => Average forgetting (W-NCM): 11.81% | Max forgetting (W-NCM): 21.18%
+2025-12-11 19:07:37,941 [trainer.py] => All params: 115034851
+2025-12-11 19:07:37,944 [trainer.py] => Trainable params: 192010
+2025-12-11 19:07:37,944 [inflora.py] => Learning on 180-190
+Parameters to be updated: {'image_encoder.blocks.4.attn.lora_B_k.18.weight', 'image_encoder.blocks.2.attn.lora_B_v.18.weight', 'image_encoder.blocks.9.attn.lora_B_k.18.weight', 'image_encoder.blocks.8.attn.lora_B_k.18.weight', 'image_encoder.blocks.11.attn.lora_B_v.18.weight', 'classifier_pool.18.weight', 'image_encoder.blocks.1.attn.lora_B_v.18.weight', 'image_encoder.blocks.10.attn.lora_B_v.18.weight', 'image_encoder.blocks.6.attn.lora_B_v.18.weight', 'image_encoder.blocks.7.attn.lora_B_v.18.weight', 'image_encoder.blocks.6.attn.lora_B_k.18.weight', 'image_encoder.blocks.10.attn.lora_B_k.18.weight', 'image_encoder.blocks.0.attn.lora_B_v.18.weight', 'image_encoder.blocks.5.attn.lora_B_v.18.weight', 'image_encoder.blocks.8.attn.lora_B_v.18.weight', 'image_encoder.blocks.11.attn.lora_B_k.18.weight', 'image_encoder.blocks.3.attn.lora_B_v.18.weight', 'image_encoder.blocks.9.attn.lora_B_v.18.weight', 'image_encoder.blocks.7.attn.lora_B_k.18.weight', 'image_encoder.blocks.5.attn.lora_B_k.18.weight', 'classifier_pool.18.bias', 'image_encoder.blocks.3.attn.lora_B_k.18.weight', 'image_encoder.blocks.2.attn.lora_B_k.18.weight', 'image_encoder.blocks.1.attn.lora_B_k.18.weight', 'image_encoder.blocks.0.attn.lora_B_k.18.weight', 'image_encoder.blocks.4.attn.lora_B_v.18.weight'}
+2025-12-11 19:15:40,670 [inflora.py] => Task 18, Epoch 50/50 => Loss 0.159, Train_accy 95.53
+Threshold:  0.998
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 17/768 type remove
+Layer 2 : 59/768 type remove
+Layer 3 : 118/768 type remove
+Layer 4 : 178/768 type remove
+Layer 5 : 238/768 type remove
+Layer 6 : 260/768 type remove
+Layer 7 : 317/768 type remove
+Layer 8 : 382/768 type retain
+Layer 9 : 271/768 type retain
+Layer 10 : 214/768 type retain
+Layer 11 : 269/768 type retain
+Layer 12 : 153/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 19:15:54,834 [trainer.py] => Time:496.89005398750305
+5683 5683
+5683 5683
+2025-12-11 19:16:10,524 [trainer.py] => Time:15.690260648727417
+2025-12-11 19:16:10,525 [inflora.py] => Exemplar size: 0
+2025-12-11 19:16:10,525 [trainer.py] => CNN: {'total': np.float64(70.77), '00-09': np.float64(70.51), '10-19': np.float64(72.56), '20-29': np.float64(76.72), '30-39': np.float64(69.93), '40-49': np.float64(73.93), '50-59': np.float64(59.59), '60-69': np.float64(70.0), '70-79': np.float64(60.11), '80-89': np.float64(75.46), '90-99': np.float64(63.36), '100-109': np.float64(61.01), '110-119': np.float64(86.25), '120-129': np.float64(60.07), '130-139': np.float64(71.04), '140-149': np.float64(67.66), '150-159': np.float64(70.9), '160-169': np.float64(79.14), '170-179': np.float64(77.08), '180-189': np.float64(75.07), 'old': np.float64(70.47), 'new': np.float64(75.07)}
+2025-12-11 19:16:10,525 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58), np.float64(71.68), np.float64(71.66), np.float64(70.93), np.float64(70.55), np.float64(71.45), np.float64(70.77)]
+2025-12-11 19:16:10,525 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13), np.float64(88.8), np.float64(88.46), np.float64(88.29), np.float64(88.33), np.float64(89.09), np.float64(88.79)]
+2025-12-11 19:16:10,525 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434, 0.7409069437883797, 0.7425028184892898, 0.7356272707843556, 0.7304695304695304, 0.7372785525819827, 0.7316558155903572]
+2025-12-11 19:16:31,075 [trainer.py] => W-NCM: {'00-09': 69.43699731903486, '10-19': 80.14440433212997, '20-29': 74.13793103448276, '30-39': 74.47552447552448, '40-49': 73.50427350427351, '50-59': 80.31088082901555, '60-69': 77.27272727272727, '70-79': 67.97752808988764, '80-89': 74.41253263707573, '90-99': 69.36936936936937, '100-109': 72.32704402515722, '110-119': 86.66666666666667, '120-129': 69.79865771812081, '130-139': 72.97297297297297, '140-149': 79.1044776119403, '150-159': 75.81967213114754, '160-169': 87.42331288343557, '170-179': 90.03322259136213, '180-189': 86.20689655172413}
+2025-12-11 19:16:31,076 [trainer.py] => Ave Acc (W-NCM): 76.92%
+2025-12-11 19:16:31,076 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 69.44% (best 89.28%); T2: W-NCM 80.14% (best 90.61%); T3: W-NCM 74.14% (best 90.52%); T4: W-NCM 74.48% (best 90.56%); T5: W-NCM 73.50% (best 83.76%); T6: W-NCM 80.31% (best 88.08%); T7: W-NCM 77.27% (best 90.00%); T8: W-NCM 67.98% (best 85.67%); T9: W-NCM 74.41% (best 86.68%); T10: W-NCM 69.37% (best 83.78%); T11: W-NCM 72.33% (best 82.70%); T12: W-NCM 86.67% (best 92.50%); T13: W-NCM 69.80% (best 83.89%); T14: W-NCM 72.97% (best 84.17%); T15: W-NCM 79.10% (best 87.06%); T16: W-NCM 75.82% (best 84.02%); T17: W-NCM 87.42% (best 90.18%); T18: W-NCM 90.03% (best 91.36%); T19: W-NCM 86.21% (best 86.21%)
+2025-12-11 19:16:31,076 [trainer.py] => Average forgetting (W-NCM): 11.09% | Max forgetting (W-NCM): 19.84%
+2025-12-11 19:16:31,079 [trainer.py] => All params: 115034851
+2025-12-11 19:16:31,082 [trainer.py] => Trainable params: 192010
+2025-12-11 19:16:31,082 [inflora.py] => Learning on 190-200
+Parameters to be updated: {'image_encoder.blocks.9.attn.lora_B_k.19.weight', 'image_encoder.blocks.3.attn.lora_B_v.19.weight', 'image_encoder.blocks.10.attn.lora_B_v.19.weight', 'image_encoder.blocks.11.attn.lora_B_k.19.weight', 'image_encoder.blocks.10.attn.lora_B_k.19.weight', 'image_encoder.blocks.0.attn.lora_B_v.19.weight', 'image_encoder.blocks.8.attn.lora_B_v.19.weight', 'classifier_pool.19.weight', 'image_encoder.blocks.7.attn.lora_B_k.19.weight', 'image_encoder.blocks.3.attn.lora_B_k.19.weight', 'image_encoder.blocks.5.attn.lora_B_k.19.weight', 'image_encoder.blocks.6.attn.lora_B_k.19.weight', 'image_encoder.blocks.0.attn.lora_B_k.19.weight', 'image_encoder.blocks.11.attn.lora_B_v.19.weight', 'image_encoder.blocks.8.attn.lora_B_k.19.weight', 'image_encoder.blocks.1.attn.lora_B_k.19.weight', 'image_encoder.blocks.1.attn.lora_B_v.19.weight', 'image_encoder.blocks.7.attn.lora_B_v.19.weight', 'image_encoder.blocks.5.attn.lora_B_v.19.weight', 'image_encoder.blocks.9.attn.lora_B_v.19.weight', 'image_encoder.blocks.4.attn.lora_B_v.19.weight', 'classifier_pool.19.bias', 'image_encoder.blocks.6.attn.lora_B_v.19.weight', 'image_encoder.blocks.2.attn.lora_B_k.19.weight', 'image_encoder.blocks.4.attn.lora_B_k.19.weight', 'image_encoder.blocks.2.attn.lora_B_v.19.weight'}
+2025-12-11 19:23:14,385 [inflora.py] => Task 19, Epoch 50/50 => Loss 0.171, Train_accy 94.91
+Threshold:  0.999
+----------------------------------------
+Gradient Constraints Summary
+----------------------------------------
+Layer 1 : 33/768 type remove
+Layer 2 : 76/768 type remove
+Layer 3 : 153/768 type remove
+Layer 4 : 233/768 type remove
+Layer 5 : 307/768 type remove
+Layer 6 : 336/768 type remove
+Layer 7 : 368/768 type retain
+Layer 8 : 303/768 type retain
+Layer 9 : 202/768 type retain
+Layer 10 : 147/768 type retain
+Layer 11 : 183/768 type retain
+Layer 12 : 92/768 type retain
+----------------------------------------
+Layer 1 - Projection Matrix shape: torch.Size([768, 768])
+Layer 2 - Projection Matrix shape: torch.Size([768, 768])
+Layer 3 - Projection Matrix shape: torch.Size([768, 768])
+Layer 4 - Projection Matrix shape: torch.Size([768, 768])
+Layer 5 - Projection Matrix shape: torch.Size([768, 768])
+Layer 6 - Projection Matrix shape: torch.Size([768, 768])
+Layer 7 - Projection Matrix shape: torch.Size([768, 768])
+Layer 8 - Projection Matrix shape: torch.Size([768, 768])
+Layer 9 - Projection Matrix shape: torch.Size([768, 768])
+Layer 10 - Projection Matrix shape: torch.Size([768, 768])
+Layer 11 - Projection Matrix shape: torch.Size([768, 768])
+Layer 12 - Projection Matrix shape: torch.Size([768, 768])
+2025-12-11 19:23:27,577 [trainer.py] => Time:416.4947648048401
+6000 6000
+6000 6000
+2025-12-11 19:23:44,164 [trainer.py] => Time:16.586378574371338
+2025-12-11 19:23:44,164 [inflora.py] => Exemplar size: 0
+2025-12-11 19:23:44,164 [trainer.py] => CNN: {'total': np.float64(70.6), '00-09': np.float64(70.51), '10-19': np.float64(72.2), '20-29': np.float64(76.08), '30-39': np.float64(70.28), '40-49': np.float64(72.65), '50-59': np.float64(63.21), '60-69': np.float64(68.18), '70-79': np.float64(60.39), '80-89': np.float64(75.46), '90-99': np.float64(62.46), '100-109': np.float64(60.06), '110-119': np.float64(83.33), '120-129': np.float64(57.72), '130-139': np.float64(70.66), '140-149': np.float64(69.15), '150-159': np.float64(69.26), '160-169': np.float64(78.22), '170-179': np.float64(77.08), '180-189': np.float64(75.07), '190-199': np.float64(76.03), 'old': np.float64(70.3), 'new': np.float64(76.03)}
+2025-12-11 19:23:44,164 [trainer.py] => CNN top1 curve: [np.float64(90.62), np.float64(86.46), np.float64(84.47), np.float64(83.43), np.float64(81.09), np.float64(78.93), np.float64(76.8), np.float64(76.36), np.float64(76.6), np.float64(76.27), np.float64(74.08), np.float64(74.16), np.float64(72.58), np.float64(71.68), np.float64(71.66), np.float64(70.93), np.float64(70.55), np.float64(71.45), np.float64(70.77), np.float64(70.6)]
+2025-12-11 19:23:44,164 [trainer.py] => CNN top1 with task curve: [np.float64(90.62), np.float64(90.62), np.float64(90.57), np.float64(91.07), np.float64(90.09), np.float64(90.42), np.float64(89.79), np.float64(89.68), np.float64(89.99), np.float64(90.13), np.float64(89.09), np.float64(89.2), np.float64(89.13), np.float64(88.8), np.float64(88.46), np.float64(88.29), np.float64(88.33), np.float64(89.09), np.float64(88.79), np.float64(88.9)]
+2025-12-11 19:23:44,164 [trainer.py] => CNN top1 task curve: [1.0, 0.9292307692307692, 0.8922800718132855, 0.8735714285714286, 0.8518971848225214, 0.8248494800218938, 0.8075232046897899, 0.7981689554723262, 0.797559224694903, 0.7932029496633536, 0.7718940936863544, 0.7682893663312483, 0.7539622641509434, 0.7409069437883797, 0.7425028184892898, 0.7356272707843556, 0.7304695304695304, 0.7372785525819827, 0.7316558155903572, 0.728]
+2025-12-11 19:24:04,999 [trainer.py] => W-NCM: {'00-09': 67.02412868632707, '10-19': 79.06137184115524, '20-29': 73.27586206896551, '30-39': 74.47552447552448, '40-49': 70.51282051282051, '50-59': 80.82901554404145, '60-69': 75.9090909090909, '70-79': 68.25842696629213, '80-89': 74.41253263707573, '90-99': 69.66966966966966, '100-109': 71.38364779874213, '110-119': 84.58333333333333, '120-129': 69.12751677852349, '130-139': 73.35907335907336, '140-149': 78.60696517412936, '150-159': 73.36065573770492, '160-169': 85.2760736196319, '170-179': 88.37209302325581, '180-189': 83.28912466843501, '190-199': 83.91167192429022}
+2025-12-11 19:24:05,000 [trainer.py] => Ave Acc (W-NCM): 76.23%
+2025-12-11 19:24:05,000 [trainer.py] => Per-task accuracies (W-NCM): T1: W-NCM 67.02% (best 89.28%); T2: W-NCM 79.06% (best 90.61%); T3: W-NCM 73.28% (best 90.52%); T4: W-NCM 74.48% (best 90.56%); T5: W-NCM 70.51% (best 83.76%); T6: W-NCM 80.83% (best 88.08%); T7: W-NCM 75.91% (best 90.00%); T8: W-NCM 68.26% (best 85.67%); T9: W-NCM 74.41% (best 86.68%); T10: W-NCM 69.67% (best 83.78%); T11: W-NCM 71.38% (best 82.70%); T12: W-NCM 84.58% (best 92.50%); T13: W-NCM 69.13% (best 83.89%); T14: W-NCM 73.36% (best 84.17%); T15: W-NCM 78.61% (best 87.06%); T16: W-NCM 73.36% (best 84.02%); T17: W-NCM 85.28% (best 90.18%); T18: W-NCM 88.37% (best 91.36%); T19: W-NCM 83.29% (best 86.21%); T20: W-NCM 83.91% (best 83.91%)
+2025-12-11 19:24:05,000 [trainer.py] => Average forgetting (W-NCM): 11.59% | Max forgetting (W-NCM): 22.25%
+2025-12-11 19:24:05,000 [trainer.py] => 
+===== Summary =====
+2025-12-11 19:24:05,000 [trainer.py] => Final average accuracy: 70.60%
+2025-12-11 19:24:05,000 [trainer.py] => Average accuracy over tasks: 76.47%
+2025-12-11 19:24:05,000 [trainer.py] => Final average forgetting: 7.67%
+2025-12-11 19:24:05,000 [trainer.py] => Final max forgetting: 20.11%
+2025-12-11 19:24:05,000 [trainer.py] => W-NCM final average accuracy: 76.23%
+2025-12-11 19:24:05,000 [trainer.py] => W-NCM average accuracy over tasks: 79.75%
+2025-12-11 19:24:05,000 [trainer.py] => W-NCM final average forgetting: 11.59%
+2025-12-11 19:24:05,000 [trainer.py] => W-NCM final max forgetting: 22.25%

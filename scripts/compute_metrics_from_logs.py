@@ -76,7 +76,7 @@ def parse_log_file(log_path: str) -> dict:
                 if acc_t > best_accuracy_per_task[t]:
                     best_accuracy_per_task[t] = acc_t
 
-    # Compute metrics
+    # Compute CNN metrics
     final_avg_acc = cnn_top1_curve[-1]
     avg_acc_over_tasks = sum(cnn_top1_curve) / len(cnn_top1_curve)
 
@@ -93,6 +93,48 @@ def parse_log_file(log_path: str) -> dict:
     )
     final_max_forgetting = max(forgetting_values) if forgetting_values else 0.0
 
+    # Optional: parse W-NCM (whitened nearest class mean) metrics if present.
+    # Per-task W-NCM average accuracies over tasks (history)
+    # Lines look like: "Ave Acc (W-NCM): 76.72%"
+    wncm_curve_pattern = r"Ave Acc \(W-NCM\):\s*([0-9.]+)%"
+    wncm_curve_matches = re.findall(wncm_curve_pattern, content)
+    wncm_top1_curve = (
+        [float(v) for v in wncm_curve_matches] if wncm_curve_matches else []
+    )
+
+    # Final W-NCM summary lines, if present
+    wncm_final_acc_match = re.search(
+        r"W-NCM final average accuracy:\s*([0-9.]+)%", content
+    )
+    wncm_avg_over_tasks_match = re.search(
+        r"W-NCM average accuracy over tasks:\s*([0-9.]+)%", content
+    )
+    wncm_final_avg_fgt_match = re.search(
+        r"W-NCM final average forgetting:\s*([0-9.]+)%", content
+    )
+    wncm_final_max_fgt_match = re.search(
+        r"W-NCM final max forgetting:\s*([0-9.]+)%", content
+    )
+
+    if wncm_final_acc_match and wncm_avg_over_tasks_match:
+        final_avg_acc_wncm = float(wncm_final_acc_match.group(1))
+        avg_acc_over_tasks_wncm = float(wncm_avg_over_tasks_match.group(1))
+        final_avg_forgetting_wncm = (
+            float(wncm_final_avg_fgt_match.group(1))
+            if wncm_final_avg_fgt_match
+            else 0.0
+        )
+        final_max_forgetting_wncm = (
+            float(wncm_final_max_fgt_match.group(1))
+            if wncm_final_max_fgt_match
+            else 0.0
+        )
+    else:
+        final_avg_acc_wncm = None
+        avg_acc_over_tasks_wncm = None
+        final_avg_forgetting_wncm = None
+        final_max_forgetting_wncm = None
+
     return {
         "log_file": os.path.basename(log_path),
         "dataset": dataset,
@@ -107,6 +149,11 @@ def parse_log_file(log_path: str) -> dict:
         "cnn_top1_curve": cnn_top1_curve,
         "best_per_task": best_accuracy_per_task,
         "current_per_task": current_accuracy_per_task,
+        "final_avg_acc_wncm": final_avg_acc_wncm,
+        "avg_acc_over_tasks_wncm": avg_acc_over_tasks_wncm,
+        "final_avg_forgetting_wncm": final_avg_forgetting_wncm,
+        "final_max_forgetting_wncm": final_max_forgetting_wncm,
+        "wncm_top1_curve": wncm_top1_curve,
     }
 
 
@@ -124,21 +171,36 @@ def main():
         print(f"No .out files found in {log_dir}")
         sys.exit(1)
 
-    print("=" * 100)
+    print("=" * 140)
     print(
-        f"{'Log File':<45} {'Dataset':<15} {'Tasks':<6} {'Final Acc':<12} {'Avg Acc':<12} {'Avg Fgt':<12} {'Max Fgt':<12}"
+        f"{'Log File':<45} {'Dataset':<15} {'Tasks':<6} "
+        f"{'Final Acc':<12} {'Avg Acc':<12} {'Avg Fgt':<12} {'Max Fgt':<12} "
+        f"{'W-NCM Acc':<12} {'W-NCM Fgt':<12}"
     )
-    print("=" * 100)
+    print("=" * 140)
 
     results = []
     for log_file in sorted(log_files):
         result = parse_log_file(str(log_file))
         if result:
             results.append(result)
+
+            fa_wncm = result.get("final_avg_acc_wncm")
+            ff_wncm = result.get("final_avg_forgetting_wncm")
+            if fa_wncm is not None:
+                fa_wncm_str = f"{fa_wncm:>10.2f}%"
+            else:
+                fa_wncm_str = f"{'--':>10}"
+            if ff_wncm is not None:
+                ff_wncm_str = f"{ff_wncm:>10.2f}%"
+            else:
+                ff_wncm_str = f"{'--':>10}"
+
             print(
                 f"{result['log_file']:<45} {result['dataset']:<15} {result['num_tasks']:<6} "
                 f"{result['final_avg_acc']:>10.2f}% {result['avg_acc_over_tasks']:>10.2f}% "
-                f"{result['final_avg_forgetting']:>10.2f}% {result['final_max_forgetting']:>10.2f}%"
+                f"{result['final_avg_forgetting']:>10.2f}% {result['final_max_forgetting']:>10.2f}% "
+                f"{fa_wncm_str} {ff_wncm_str}"
             )
         else:
             print(f"{log_file.name:<45} FAILED TO PARSE")
@@ -156,16 +218,41 @@ def main():
         print(
             f"  Dataset: {result['dataset']}, Tasks: {result['num_tasks']}, Seed: {result['seed']}"
         )
-        print(f"  Final Average Accuracy: {result['final_avg_acc']:.2f}%")
-        print(f"  Average Accuracy over Tasks: {result['avg_acc_over_tasks']:.2f}%")
-        print(f"  Final Average Forgetting: {result['final_avg_forgetting']:.2f}%")
-        print(f"  Final Max Forgetting: {result['final_max_forgetting']:.2f}%")
+        print(f"  Final Average Accuracy (CNN): {result['final_avg_acc']:.2f}%")
+        print(
+            f"  Average Accuracy over Tasks (CNN): {result['avg_acc_over_tasks']:.2f}%"
+        )
+        print(
+            f"  Final Average Forgetting (CNN): {result['final_avg_forgetting']:.2f}%"
+        )
+        print(f"  Final Max Forgetting (CNN): {result['final_max_forgetting']:.2f}%")
         print(f"  CNN Top1 Curve: {[f'{v:.2f}' for v in result['cnn_top1_curve']]}")
         if result["best_per_task"]:
             print(f"  Best per Task: {[f'{v:.2f}' for v in result['best_per_task']]}")
             print(
                 f"  Current per Task: {[f'{v:.2f}' for v in result['current_per_task']]}"
             )
+        fa_wncm = result.get("final_avg_acc_wncm")
+        if fa_wncm is not None:
+            print(
+                f"  Final Average Accuracy (W-NCM): {result['final_avg_acc_wncm']:.2f}%"
+            )
+            print(
+                "  Average Accuracy over Tasks (W-NCM): "
+                f"{result['avg_acc_over_tasks_wncm']:.2f}%"
+            )
+            print(
+                "  Final Average Forgetting (W-NCM): "
+                f"{result['final_avg_forgetting_wncm']:.2f}%"
+            )
+            print(
+                f"  Final Max Forgetting (W-NCM): {result['final_max_forgetting_wncm']:.2f}%"
+            )
+            if result.get("wncm_top1_curve"):
+                print(
+                    "  W-NCM Top1 Curve: "
+                    f"{[f'{v:.2f}' for v in result['wncm_top1_curve']]}"
+                )
 
 
 if __name__ == "__main__":

@@ -333,10 +333,114 @@ class iDomainNet(iData):
         test_data_config = yaml.load(
             open("dataloaders/splits/domainnet_test.yaml", "r"), Loader=yaml.Loader
         )
-        self.train_data = np.array(train_data_config["data"])
+
+        # If data_path is provided in args, treat it as the root of the
+        # DomainNet directory containing the six domain folders
+        # (clipart/infograph/painting/quickdraw/real/sketch). The YAML
+        # files store paths like "data/DomainNet/domain/class/file.jpg";
+        # we strip the leading prefix and join the remainder to data_path
+        # so that we can reuse the same dataset root as DC-LoRA.
+        data_root = os.path.expanduser(self.args.get("data_path", ""))
+
+        def _remap_domainnet_path(p):
+            # Only remap when data_root is an absolute path; for relative
+            # defaults we keep the original YAML paths for backward
+            # compatibility.
+            if not data_root or not os.path.isabs(data_root):
+                return p
+
+            prefixes = [
+                "data/DomainNet/",
+                "DomainNet/",
+                "data/domainnet/",
+                "domainnet/",
+            ]
+
+            for pre in prefixes:
+                if p.startswith(pre):
+                    rel = p[len(pre) :]
+                    return os.path.join(data_root, rel)
+
+            # If p is already absolute, keep as-is; otherwise join with data_root
+            if os.path.isabs(p):
+                return p
+            return os.path.join(data_root, p)
+
+        train_paths = [_remap_domainnet_path(p) for p in train_data_config["data"]]
+        test_paths = [_remap_domainnet_path(p) for p in test_data_config["data"]]
+
+        self.train_data = np.array(train_paths)
         self.train_targets = np.array(train_data_config["targets"])
-        self.test_data = np.array(test_data_config["data"])
+        self.test_data = np.array(test_paths)
         self.test_targets = np.array(test_data_config["targets"])
+
+
+class iIDomainNet(iData):
+
+    use_path = True
+    train_trsf = [
+        transforms.RandomResizedCrop(224),
+        transforms.RandomHorizontalFlip(),
+    ]
+    test_trsf = [
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+    ]
+    common_trsf = [
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.0, 0.0, 0.0], std=[1.0, 1.0, 1.0]),
+    ]
+
+    def __init__(self, args):
+        self.args = args
+        class_order = np.arange(100).tolist()
+        self.class_order = class_order
+
+    def download_data(self):
+        # Project root is four levels above this file:
+        # dc_inc/baselines/InfLoRA/utils/data.py -> dc_inc
+        base_dir = os.path.dirname(
+            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        )
+        splits_dir = os.path.join(base_dir, "splits", "idomainnet")
+
+        classes_file = os.path.join(splits_dir, "idomainnet_classes.txt")
+        train_file = os.path.join(splits_dir, "idomainnet_train.txt")
+        test_file = os.path.join(splits_dir, "idomainnet_test.txt")
+
+        with open(classes_file, "r") as f:
+            class_names = [line.strip() for line in f if line.strip()]
+
+        class_to_idx = {c: i for i, c in enumerate(class_names)}
+        self.class_order = list(range(len(class_names)))
+
+        data_root = os.path.expanduser(self.args.get("data_path", ""))
+        if not data_root:
+            data_root = "data/domainnet"
+        data_root = os.path.expanduser(data_root)
+
+        def _load_split(txt_path):
+            paths = []
+            labels = []
+            with open(txt_path, "r") as f:
+                for line in f:
+                    p = line.strip()
+                    if not p:
+                        continue
+                    parts = p.split("/")
+                    if len(parts) < 3:
+                        continue
+                    cls_name = parts[1]
+                    if cls_name not in class_to_idx:
+                        continue
+                    label = class_to_idx[cls_name]
+                    full_path = os.path.join(data_root, p)
+                    paths.append(full_path)
+                    labels.append(label)
+            return np.array(paths), np.array(labels)
+
+        self.train_data, self.train_targets = _load_split(train_file)
+        self.test_data, self.test_targets = _load_split(test_file)
 
 
 class iMULTI(iData):

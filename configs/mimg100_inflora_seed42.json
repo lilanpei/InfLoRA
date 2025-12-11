@@ -28,5 +28,8 @@
     "rank": 10,
     "lamb": 0.98,
     "lame": 1.0,
-    "num_workers" : 8
+    "num_workers" : 8,
+    "use_wncm": true,
+    "wncm_lambda": 0.07,
+    "save_checkpoints": false
 }
