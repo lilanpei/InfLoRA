@@ -18,6 +18,7 @@ from utils.schedulers import CosineSchedule
 import ipdb
 import math
 
+
 class InfLoRA(BaseLearner):
 
     def __init__(self, args):
@@ -26,8 +27,8 @@ class InfLoRA(BaseLearner):
         if args["net_type"] == "sip":
             self._network = SiNet(args)
         else:
-            raise ValueError('Unknown net: {}.'.format(args["net_type"]))
-        
+            raise ValueError("Unknown net: {}.".format(args["net_type"]))
+
         for module in self._network.modules():
             if isinstance(module, Attention_LoRA):
                 module.init_param()
@@ -61,22 +62,40 @@ class InfLoRA(BaseLearner):
     def after_task(self):
         # self._old_network = self._network.copy().freeze()
         self._known_classes = self._total_classes
-        logging.info('Exemplar size: {}'.format(self.exemplar_size))
+        logging.info("Exemplar size: {}".format(self.exemplar_size))
 
     def incremental_train(self, data_manager):
 
         self._cur_task += 1
-        self._total_classes = self._known_classes + data_manager.get_task_size(self._cur_task)
+        self._total_classes = self._known_classes + data_manager.get_task_size(
+            self._cur_task
+        )
         self._network.update_fc(self._total_classes)
 
-        logging.info('Learning on {}-{}'.format(self._known_classes, self._total_classes))
+        logging.info(
+            "Learning on {}-{}".format(self._known_classes, self._total_classes)
+        )
 
-        train_dataset = data_manager.get_dataset(np.arange(self._known_classes, self._total_classes), source='train', mode='train')
-        self.train_loader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=True,
-                                       num_workers=self.num_workers)
-        test_dataset = data_manager.get_dataset(np.arange(0, self._total_classes), source='test', mode='test')
-        self.test_loader = DataLoader(test_dataset, batch_size=self.batch_size, shuffle=False,
-                                      num_workers=self.num_workers)
+        train_dataset = data_manager.get_dataset(
+            np.arange(self._known_classes, self._total_classes),
+            source="train",
+            mode="train",
+        )
+        self.train_loader = DataLoader(
+            train_dataset,
+            batch_size=self.batch_size,
+            shuffle=True,
+            num_workers=self.num_workers,
+        )
+        test_dataset = data_manager.get_dataset(
+            np.arange(0, self._total_classes), source="test", mode="test"
+        )
+        self.test_loader = DataLoader(
+            test_dataset,
+            batch_size=self.batch_size,
+            shuffle=False,
+            num_workers=self.num_workers,
+        )
 
         # if len(self._multiple_gpus) > 1:
         #     self._network = nn.DataParallel(self._network, self._multiple_gpus)
@@ -93,7 +112,10 @@ class InfLoRA(BaseLearner):
         for name, param in self._network.named_parameters():
             param.requires_grad_(False)
             try:
-                if "classifier_pool" + "." + str(self._network.module.numtask - 1) in name:
+                if (
+                    "classifier_pool" + "." + str(self._network.module.numtask - 1)
+                    in name
+                ):
                     param.requires_grad_(True)
                 if "lora_B_k" + "." + str(self._network.module.numtask - 1) in name:
                     param.requires_grad_(True)
@@ -124,8 +146,12 @@ class InfLoRA(BaseLearner):
                     if isinstance(module, Attention_LoRA):
                         cur_matrix = module.cur_matrix
                         U, S, V = torch.linalg.svd(cur_matrix)
-                        module.lora_A_k[self._cur_task].weight.data.copy_(U[:,:module.rank].T/math.sqrt(3))
-                        module.lora_A_v[self._cur_task].weight.data.copy_(U[:,:module.rank].T/math.sqrt(3))
+                        module.lora_A_k[self._cur_task].weight.data.copy_(
+                            U[:, : module.rank].T / math.sqrt(3)
+                        )
+                        module.lora_A_v[self._cur_task].weight.data.copy_(
+                            U[:, : module.rank].T / math.sqrt(3)
+                        )
                         module.cur_matrix.zero_()
                         module.n_cur_matrix = 0
             else:
@@ -145,14 +171,20 @@ class InfLoRA(BaseLearner):
                 for module in self._network.modules():
                     if isinstance(module, Attention_LoRA):
                         cur_matrix = module.cur_matrix
-                        if self.project_type[kk] == 'remove':
-                            cur_matrix = cur_matrix - torch.mm(self.feature_mat[kk],cur_matrix)
+                        if self.project_type[kk] == "remove":
+                            cur_matrix = cur_matrix - torch.mm(
+                                self.feature_mat[kk], cur_matrix
+                            )
                         else:
-                            assert self.project_type[kk] == 'retain'
-                            cur_matrix = torch.mm(self.feature_mat[kk],cur_matrix)
+                            assert self.project_type[kk] == "retain"
+                            cur_matrix = torch.mm(self.feature_mat[kk], cur_matrix)
                         cU, cS, cV = torch.linalg.svd(cur_matrix, full_matrices=False)
-                        module.lora_A_k[self._cur_task].weight.data.copy_(cU[:,:module.rank].T/math.sqrt(3))
-                        module.lora_A_v[self._cur_task].weight.data.copy_(cU[:,:module.rank].T/math.sqrt(3))
+                        module.lora_A_k[self._cur_task].weight.data.copy_(
+                            cU[:, : module.rank].T / math.sqrt(3)
+                        )
+                        module.lora_A_v[self._cur_task].weight.data.copy_(
+                            cU[:, : module.rank].T / math.sqrt(3)
+                        )
                         module.cur_matrix.zero_()
                         module.n_cur_matrix = 0
                         kk += 1
@@ -160,24 +192,48 @@ class InfLoRA(BaseLearner):
         print(f"Parameters to be updated: {enabled}")
         if len(self._multiple_gpus) > 1:
             self._network = nn.DataParallel(self._network, self._multiple_gpus)
-        if self._cur_task==0:
-            if self.optim == 'sgd':
-                optimizer = optim.SGD(self._network.parameters(), momentum=0.9,lr=self.init_lr,weight_decay=self.init_weight_decay)
-                scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer=optimizer,T_max=self.init_epoch)
-            elif self.optim == 'adam':
-                optimizer = optim.Adam(self._network.parameters(),lr=self.init_lr,weight_decay=self.init_weight_decay, betas=(0.9,0.999))
-                scheduler = CosineSchedule(optimizer=optimizer,K=self.init_epoch)
+        if self._cur_task == 0:
+            if self.optim == "sgd":
+                optimizer = optim.SGD(
+                    self._network.parameters(),
+                    momentum=0.9,
+                    lr=self.init_lr,
+                    weight_decay=self.init_weight_decay,
+                )
+                scheduler = optim.lr_scheduler.CosineAnnealingLR(
+                    optimizer=optimizer, T_max=self.init_epoch
+                )
+            elif self.optim == "adam":
+                optimizer = optim.Adam(
+                    self._network.parameters(),
+                    lr=self.init_lr,
+                    weight_decay=self.init_weight_decay,
+                    betas=(0.9, 0.999),
+                )
+                scheduler = CosineSchedule(optimizer=optimizer, K=self.init_epoch)
             else:
                 raise Exception
             self.run_epoch = self.init_epoch
-            self.train_function(train_loader,test_loader,optimizer,scheduler)
+            self.train_function(train_loader, test_loader, optimizer, scheduler)
         else:
-            if self.optim == 'sgd':
-                optimizer = optim.SGD(self._network.parameters(), momentum=0.9,lr=self.lrate,weight_decay=self.weight_decay)
-                scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer=optimizer,T_max=self.epochs)
-            elif self.optim == 'adam':
-                optimizer = optim.Adam(self._network.parameters(),lr=self.lrate,weight_decay=self.weight_decay, betas=(0.9,0.999))
-                scheduler = CosineSchedule(optimizer=optimizer,K=self.epochs)
+            if self.optim == "sgd":
+                optimizer = optim.SGD(
+                    self._network.parameters(),
+                    momentum=0.9,
+                    lr=self.lrate,
+                    weight_decay=self.weight_decay,
+                )
+                scheduler = optim.lr_scheduler.CosineAnnealingLR(
+                    optimizer=optimizer, T_max=self.epochs
+                )
+            elif self.optim == "adam":
+                optimizer = optim.Adam(
+                    self._network.parameters(),
+                    lr=self.lrate,
+                    weight_decay=self.weight_decay,
+                    betas=(0.9, 0.999),
+                )
+                scheduler = CosineSchedule(optimizer=optimizer, K=self.epochs)
             else:
                 raise Exception
             self.run_epoch = self.epochs
@@ -200,10 +256,20 @@ class InfLoRA(BaseLearner):
             self.update_DualGPM(mat_list)
 
             # Projection Matrix Precomputation
+            # Ensure we always operate on numpy arrays to avoid torch.transpose() issues
             self.feature_mat = []
             for p in range(len(self.feature_list)):
-                Uf=torch.Tensor(np.dot(self.feature_list[p],self.feature_list[p].transpose()))
-                print('Layer {} - Projection Matrix shape: {}'.format(p+1,Uf.shape))
+                feat = self.feature_list[p]
+                # Convert to numpy if needed
+                if isinstance(feat, torch.Tensor):
+                    feat_np = feat.detach().cpu().numpy()
+                else:
+                    feat_np = np.asarray(feat)
+
+                # feat_np: [d, r], build projection matrix U U^T
+                Uf_np = feat_np @ feat_np.T
+                Uf = torch.from_numpy(Uf_np.astype(np.float32))
+                print("Layer {} - Projection Matrix shape: {}".format(p + 1, Uf.shape))
                 self.feature_mat.append(Uf)
 
         return
@@ -212,16 +278,16 @@ class InfLoRA(BaseLearner):
         prog_bar = tqdm(range(self.run_epoch))
         for _, epoch in enumerate(prog_bar):
             self._network.eval()
-            losses = 0.
+            losses = 0.0
             correct, total = 0, 0
             for i, (_, inputs, targets) in enumerate(train_loader):
 
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
                 mask = (targets >= self._known_classes).nonzero().view(-1)
                 inputs = torch.index_select(inputs, 0, mask)
-                targets = torch.index_select(targets, 0, mask)-self._known_classes
+                targets = torch.index_select(targets, 0, mask) - self._known_classes
 
-                logits = self._network(inputs)['logits']
+                logits = self._network(inputs)["logits"]
                 loss = F.cross_entropy(logits, targets)
 
                 optimizer.zero_grad()
@@ -233,17 +299,22 @@ class InfLoRA(BaseLearner):
                 _, preds = torch.max(logits, dim=1)
                 correct += preds.eq(targets.expand_as(preds)).cpu().sum()
                 total += len(targets)
-                if self.debug and i > 10: break
+                if self.debug and i > 10:
+                    break
 
             scheduler.step()
             train_acc = np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
-            info = 'Task {}, Epoch {}/{} => Loss {:.3f}, Train_accy {:.2f}'.format(
-                self._cur_task, epoch + 1, self.run_epoch, losses / len(train_loader), train_acc)
+            info = "Task {}, Epoch {}/{} => Loss {:.3f}, Train_accy {:.2f}".format(
+                self._cur_task,
+                epoch + 1,
+                self.run_epoch,
+                losses / len(train_loader),
+                train_acc,
+            )
             prog_bar.set_description(info)
 
         logging.info(info)
-
 
     def clustering(self, dataloader):
         features = []
@@ -260,14 +331,16 @@ class InfLoRA(BaseLearner):
             features.append(feature)
         features = torch.cat(features, 0).cpu().detach().numpy()
         clustering = KMeans(n_clusters=5, random_state=0).fit(features)
-        self.all_keys.append(torch.tensor(clustering.cluster_centers_).to(feature.device))
+        self.all_keys.append(
+            torch.tensor(clustering.cluster_centers_).to(feature.device)
+        )
 
     def _evaluate(self, y_pred, y_true):
         ret = {}
         print(len(y_pred), len(y_true))
         grouped = accuracy(y_pred, y_true, self._known_classes, self.class_num)
-        ret['grouped'] = grouped
-        ret['top1'] = grouped['total']
+        ret["grouped"] = grouped
+        ret["top1"] = grouped["total"]
         return ret
 
     def _eval_cnn(self, loader):
@@ -280,29 +353,41 @@ class InfLoRA(BaseLearner):
             targets = targets.to(self._device)
 
             with torch.no_grad():
-                y_true_task.append((targets//self.class_num).cpu())
+                y_true_task.append((targets // self.class_num).cpu())
 
                 if isinstance(self._network, nn.DataParallel):
                     outputs = self._network.module.interface(inputs)
                 else:
                     outputs = self._network.interface(inputs)
 
-            predicts = torch.topk(outputs, k=self.topk, dim=1, largest=True, sorted=True)[1].view(-1)  # [bs, topk]
-            y_pred_task.append((predicts//self.class_num).cpu())
+            predicts = torch.topk(
+                outputs, k=self.topk, dim=1, largest=True, sorted=True
+            )[1].view(
+                -1
+            )  # [bs, topk]
+            y_pred_task.append((predicts // self.class_num).cpu())
 
-            outputs_with_task = torch.zeros_like(outputs)[:,:self.class_num]
-            for idx, i in enumerate(targets//self.class_num):
-                en, be = self.class_num*i, self.class_num*(i+1)
+            outputs_with_task = torch.zeros_like(outputs)[:, : self.class_num]
+            for idx, i in enumerate(targets // self.class_num):
+                en, be = self.class_num * i, self.class_num * (i + 1)
                 outputs_with_task[idx] = outputs[idx, en:be]
             predicts_with_task = outputs_with_task.argmax(dim=1)
-            predicts_with_task = predicts_with_task + (targets//self.class_num)*self.class_num
+            predicts_with_task = (
+                predicts_with_task + (targets // self.class_num) * self.class_num
+            )
 
             # print(predicts.shape)
             y_pred.append(predicts.cpu().numpy())
             y_pred_with_task.append(predicts_with_task.cpu().numpy())
             y_true.append(targets.cpu().numpy())
 
-        return np.concatenate(y_pred), np.concatenate(y_pred_with_task), np.concatenate(y_true), torch.cat(y_pred_task), torch.cat(y_true_task)  # [N, topk]
+        return (
+            np.concatenate(y_pred),
+            np.concatenate(y_pred_with_task),
+            np.concatenate(y_true),
+            torch.cat(y_pred_task),
+            torch.cat(y_true_task),
+        )  # [N, topk]
 
     def _compute_accuracy_domain(self, model, loader):
         model.eval()
@@ -310,154 +395,190 @@ class InfLoRA(BaseLearner):
         for i, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
             with torch.no_grad():
-                outputs = model(inputs)['logits']
+                outputs = model(inputs)["logits"]
 
             predicts = torch.max(outputs, dim=1)[1]
-            correct += ((predicts % self.class_num).cpu() == (targets % self.class_num)).sum()
+            correct += (
+                (predicts % self.class_num).cpu() == (targets % self.class_num)
+            ).sum()
             total += len(targets)
 
         return np.around(tensor2numpy(correct) * 100 / total, decimals=2)
 
-    def update_DualGPM (self, mat_list):
-        threshold = (self.lame - self.lamb)*self._cur_task/self.total_sessions + self.lamb
-        print ('Threshold: ', threshold) 
+    def update_DualGPM(self, mat_list):
+        threshold = (
+            self.lame - self.lamb
+        ) * self._cur_task / self.total_sessions + self.lamb
+        print("Threshold: ", threshold)
         if len(self.feature_list) == 0:
-            # After First Task 
+            # After First Task
             for i in range(len(mat_list)):
                 activation = mat_list[i]
-                U,S,Vh = np.linalg.svd(activation, full_matrices=False)
+                U, S, Vh = np.linalg.svd(activation, full_matrices=False)
                 # criteria (Eq-5)
                 sval_total = (S**2).sum()
-                sval_ratio = (S**2)/sval_total
-                r = np.sum(np.cumsum(sval_ratio)<threshold) #+1  
-                if r < (activation.shape[0]/2):
-                    self.feature_list.append(U[:,0:max(r,1)])
-                    self.project_type.append('remove')
+                sval_ratio = (S**2) / sval_total
+                r = np.sum(np.cumsum(sval_ratio) < threshold)  # +1
+                if r < (activation.shape[0] / 2):
+                    self.feature_list.append(U[:, 0 : max(r, 1)])
+                    self.project_type.append("remove")
                 else:
-                    self.feature_list.append(U[:,0:max(r,1)])
-                    self.project_type.append('retain')
+                    self.feature_list.append(U[:, 0 : max(r, 1)])
+                    self.project_type.append("retain")
         else:
             for i in range(len(mat_list)):
-                if self.project_type[i] == 'remove':
+                # Ensure feature_list entries are numpy arrays
+                feat = self.feature_list[i]
+                if isinstance(feat, torch.Tensor):
+                    feat = feat.detach().cpu().numpy()
+                else:
+                    feat = np.asarray(feat)
+                self.feature_list[i] = feat
+
+                if self.project_type[i] == "remove":
                     activation = mat_list[i]
-                    U1,S1,Vh1=np.linalg.svd(activation, full_matrices=False)
+                    U1, S1, Vh1 = np.linalg.svd(activation, full_matrices=False)
                     sval_total = (S1**2).sum()
                     # Projected Representation (Eq-8)
-                    act_hat = activation - np.dot(np.dot(self.feature_list[i],self.feature_list[i].transpose()),activation)
-                    U,S,Vh = np.linalg.svd(act_hat, full_matrices=False)
+                    act_hat = activation - np.dot(np.dot(feat, feat.T), activation)
+                    U, S, Vh = np.linalg.svd(act_hat, full_matrices=False)
                     # criteria (Eq-9)
                     sval_hat = (S**2).sum()
-                    sval_ratio = (S**2)/sval_total               
-                    accumulated_sval = (sval_total-sval_hat)/sval_total
-            
+                    sval_ratio = (S**2) / sval_total
+                    accumulated_sval = (sval_total - sval_hat) / sval_total
+
                     r = 0
-                    for ii in range (sval_ratio.shape[0]):
+                    for ii in range(sval_ratio.shape[0]):
                         if accumulated_sval < threshold:
                             accumulated_sval += sval_ratio[ii]
                             r += 1
                         else:
                             break
                     if r == 0:
-                        print ('Skip Updating DualGPM for layer: {}'.format(i+1)) 
+                        print("Skip Updating DualGPM for layer: {}".format(i + 1))
                         continue
                     # update GPM
-                    Ui=np.hstack((self.feature_list[i],U[:,0:r]))  
-                    if Ui.shape[1] > Ui.shape[0] :
-                        self.feature_list[i]=Ui[:,0:Ui.shape[0]]
+                    Ui = np.hstack((feat, U[:, 0:r]))
+                    if Ui.shape[1] > Ui.shape[0]:
+                        self.feature_list[i] = Ui[:, 0 : Ui.shape[0]]
                     else:
-                        self.feature_list[i]=Ui
+                        self.feature_list[i] = Ui
                 else:
-                    assert self.project_type[i] == 'retain'
+                    assert self.project_type[i] == "retain"
                     activation = mat_list[i]
-                    U1,S1,Vh1=np.linalg.svd(activation, full_matrices=False)
+                    U1, S1, Vh1 = np.linalg.svd(activation, full_matrices=False)
                     sval_total = (S1**2).sum()
                     # Projected Representation (Eq-8)
-                    act_hat = np.dot(np.dot(self.feature_list[i],self.feature_list[i].transpose()),activation)
-                    U,S,Vh = np.linalg.svd(act_hat, full_matrices=False)
+                    act_hat = np.dot(np.dot(feat, feat.T), activation)
+                    U, S, Vh = np.linalg.svd(act_hat, full_matrices=False)
                     # criteria (Eq-9)
                     sval_hat = (S**2).sum()
-                    sval_ratio = (S**2)/sval_total               
-                    accumulated_sval = sval_hat/sval_total
+                    sval_ratio = (S**2) / sval_total
+                    accumulated_sval = sval_hat / sval_total
 
                     r = 0
-                    for ii in range (sval_ratio.shape[0]):
-                        if accumulated_sval >= (1-threshold):
+                    for ii in range(sval_ratio.shape[0]):
+                        if accumulated_sval >= (1 - threshold):
                             accumulated_sval -= sval_ratio[ii]
                             r += 1
                         else:
                             break
                     if r == 0:
-                        print ('Skip Updating DualGPM for layer: {}'.format(i+1)) 
+                        print("Skip Updating DualGPM for layer: {}".format(i + 1))
                         continue
 
                     # update GPM by Projected Representation (Eq-8)
-                    act_feature = self.feature_list[i] - np.dot(np.dot(U[:,0:r],U[:,0:r].transpose()),self.feature_list[i])
+                    act_feature = feat - np.dot(np.dot(U[:, 0:r], U[:, 0:r].T), feat)
                     Ui, Si, Vi = np.linalg.svd(act_feature)
-                    self.feature_list[i]=Ui[:,:self.feature_list[i].shape[1]-r]
+                    self.feature_list[i] = Ui[:, : feat.shape[1] - r]
 
-        print('-'*40)
-        print('Gradient Constraints Summary')
-        print('-'*40)
+        print("-" * 40)
+        print("Gradient Constraints Summary")
+        print("-" * 40)
         for i in range(len(self.feature_list)):
-            if self.project_type[i]=='remove' and (self.feature_list[i].shape[1] > (self.feature_list[i].shape[0]/2)):
+            if self.project_type[i] == "remove" and (
+                self.feature_list[i].shape[1] > (self.feature_list[i].shape[0] / 2)
+            ):
                 feature = self.feature_list[i]
                 # ipdb.set_trace()
                 U, S, V = np.linalg.svd(feature)
-                new_feature = U[:,feature.shape[1]:]
+                new_feature = U[:, feature.shape[1] :]
                 self.feature_list[i] = new_feature
-                self.project_type[i] = 'retain'
-            elif self.project_type[i]=='retain':
-                assert self.feature_list[i].shape[1] <= (self.feature_list[i].shape[0]/2)
-            print ('Layer {} : {}/{} type {}'.format(i+1,self.feature_list[i].shape[1], self.feature_list[i].shape[0], self.project_type[i]))
-        print('-'*40)
+                self.project_type[i] = "retain"
+            elif self.project_type[i] == "retain":
+                assert self.feature_list[i].shape[1] <= (
+                    self.feature_list[i].shape[0] / 2
+                )
+            print(
+                "Layer {} : {}/{} type {}".format(
+                    i + 1,
+                    self.feature_list[i].shape[1],
+                    self.feature_list[i].shape[0],
+                    self.project_type[i],
+                )
+            )
+        print("-" * 40)
 
-
-    def update_GPM (self, mat_list):
-        threshold = (self.lame - self.lamb)*self._cur_task/self.total_sessions + self.lamb
-        print ('Threshold: ', threshold) 
+    def update_GPM(self, mat_list):
+        threshold = (
+            self.lame - self.lamb
+        ) * self._cur_task / self.total_sessions + self.lamb
+        print("Threshold: ", threshold)
         if len(self.feature_list) == 0:
-            # After First Task 
+            # After First Task
             for i in range(len(mat_list)):
                 activation = mat_list[i]
-                U,S,Vh = np.linalg.svd(activation, full_matrices=False)
+                U, S, Vh = np.linalg.svd(activation, full_matrices=False)
                 # criteria (Eq-5)
                 sval_total = (S**2).sum()
-                sval_ratio = (S**2)/sval_total
-                r = np.sum(np.cumsum(sval_ratio)<threshold) #+1  
-                self.feature_list.append(U[:,0:max(r,1)])
+                sval_ratio = (S**2) / sval_total
+                r = np.sum(np.cumsum(sval_ratio) < threshold)  # +1
+                self.feature_list.append(U[:, 0 : max(r, 1)])
         else:
             for i in range(len(mat_list)):
+                # Ensure feature_list entries are numpy arrays
+                feat = self.feature_list[i]
+                if isinstance(feat, torch.Tensor):
+                    feat = feat.detach().cpu().numpy()
+                else:
+                    feat = np.asarray(feat)
+                self.feature_list[i] = feat
+
                 activation = mat_list[i]
-                U1,S1,Vh1=np.linalg.svd(activation, full_matrices=False)
+                U1, S1, Vh1 = np.linalg.svd(activation, full_matrices=False)
                 sval_total = (S1**2).sum()
                 # Projected Representation (Eq-8)
-                act_hat = activation - np.dot(np.dot(self.feature_list[i],self.feature_list[i].transpose()),activation)
-                U,S,Vh = np.linalg.svd(act_hat, full_matrices=False)
+                act_hat = activation - np.dot(np.dot(feat, feat.T), activation)
+                U, S, Vh = np.linalg.svd(act_hat, full_matrices=False)
                 # criteria (Eq-9)
                 sval_hat = (S**2).sum()
-                sval_ratio = (S**2)/sval_total               
-                accumulated_sval = (sval_total-sval_hat)/sval_total
-            
+                sval_ratio = (S**2) / sval_total
+                accumulated_sval = (sval_total - sval_hat) / sval_total
+
                 r = 0
-                for ii in range (sval_ratio.shape[0]):
+                for ii in range(sval_ratio.shape[0]):
                     if accumulated_sval < threshold:
                         accumulated_sval += sval_ratio[ii]
                         r += 1
                     else:
                         break
                 if r == 0:
-                    print ('Skip Updating GPM for layer: {}'.format(i+1)) 
+                    print("Skip Updating GPM for layer: {}".format(i + 1))
                     continue
                 # update GPM
-                Ui=np.hstack((self.feature_list[i],U[:,0:r]))  
-                if Ui.shape[1] > Ui.shape[0] :
-                    self.feature_list[i]=Ui[:,0:Ui.shape[0]]
+                Ui = np.hstack((feat, U[:, 0:r]))
+                if Ui.shape[1] > Ui.shape[0]:
+                    self.feature_list[i] = Ui[:, 0 : Ui.shape[0]]
                 else:
-                    self.feature_list[i]=Ui
-    
-        print('-'*40)
-        print('Gradient Constraints Summary')
-        print('-'*40)
+                    self.feature_list[i] = Ui
+
+        print("-" * 40)
+        print("Gradient Constraints Summary")
+        print("-" * 40)
         for i in range(len(self.feature_list)):
-            logging.info('Layer {} : {}/{}'.format(i+1,self.feature_list[i].shape[1], self.feature_list[i].shape[0]))
-        print('-'*40)  
+            logging.info(
+                "Layer {} : {}/{}".format(
+                    i + 1, self.feature_list[i].shape[1], self.feature_list[i].shape[0]
+                )
+            )
+        print("-" * 40)
