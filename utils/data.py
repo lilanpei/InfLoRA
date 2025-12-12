@@ -377,6 +377,16 @@ class iDomainNet(iData):
 
 class iIDomainNet(iData):
 
+    # Domain order mirrors DC-LoRA's IDOMAINNET_DOMAIN_ORDER for consistency.
+    IDOMAINNET_DOMAIN_ORDER = [
+        "real",
+        "painting",
+        "clipart",
+        "sketch",
+        "quickdraw",
+        "infograph",
+    ]
+
     use_path = True
     train_trsf = [
         transforms.RandomResizedCrop(224),
@@ -422,6 +432,7 @@ class iIDomainNet(iData):
         def _load_split(txt_path):
             paths = []
             labels = []
+            domains = []
             with open(txt_path, "r") as f:
                 for line in f:
                     p = line.strip()
@@ -430,6 +441,7 @@ class iIDomainNet(iData):
                     parts = p.split("/")
                     if len(parts) < 3:
                         continue
+                    domain = parts[0]
                     cls_name = parts[1]
                     if cls_name not in class_to_idx:
                         continue
@@ -437,10 +449,13 @@ class iIDomainNet(iData):
                     full_path = os.path.join(data_root, p)
                     paths.append(full_path)
                     labels.append(label)
-            return np.array(paths), np.array(labels)
+                    domains.append(domain)
+            return np.array(paths), np.array(labels), np.array(domains)
 
-        self.train_data, self.train_targets = _load_split(train_file)
-        self.test_data, self.test_targets = _load_split(test_file)
+        self.train_data, self.train_targets, self.train_domains = _load_split(
+            train_file
+        )
+        self.test_data, self.test_targets, self.test_domains = _load_split(test_file)
 
 
 class iMULTI(iData):

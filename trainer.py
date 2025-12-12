@@ -88,6 +88,10 @@ def _train(args):
         args,
     )
     args["class_order"] = data_manager._class_order
+    # Ensure total_sessions matches the actual number of tasks implied by the
+    # DataManager. This is important for datasets like iDomainNet when
+    # idomainnet_tasks_per_domain is used to control the number of tasks.
+    args["total_sessions"] = data_manager.nb_tasks
     model = factory.get_model(args["model_name"], args)
 
     cnn_curve, cnn_curve_with_task, nme_curve, cnn_curve_task = (

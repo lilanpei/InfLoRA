@@ -11,4 +11,4 @@
 
 cd ~/dc_inc/baselines/InfLoRA
 
-~/venv_inc_lora/bin/python main.py   --device 0   --config configs/idomainnet_inflora_seed42_nowncm.json
+~/venv_inc_lora/bin/python main.py   --device 0   --config configs/idomainnet_inflora_seed42_nowncm_10ep.json
